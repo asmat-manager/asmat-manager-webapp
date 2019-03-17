@@ -1,1 +1,11 @@
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/theming";
+@import "palette";
+
+@include mat-core();
+
+$primary-palette: mat-palette($primary-colors, 400, 100, 700);
+$accent-palette: mat-palette($accent-colors, 500, 200, 800);
+
+$theme: mat-light-theme($primary-palette, $accent-palette);
+
+@include angular-material-theme($theme);
