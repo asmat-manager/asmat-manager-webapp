@@ -14,6 +14,8 @@ import {WebviewDirective} from './electron/webview.directive';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './home/navbar/navbar.component';
 import {MaterialModule} from './material/material.module';
+import { ListAsmatsComponent } from './home/list-asmats/list-asmats.component';
+import { AsmatsTableComponent } from './home/list-asmats/asmats-table/asmats-table.component';
 
 // NG Translate
 
@@ -23,7 +25,9 @@ import {MaterialModule} from './material/material.module';
     AppComponent,
     WebviewDirective,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    ListAsmatsComponent,
+    AsmatsTableComponent
   ],
   imports: [
     BrowserModule,
