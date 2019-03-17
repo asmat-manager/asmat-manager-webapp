@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AsmatService} from '../../service/asmat.service';
 import {Asmat} from '../../model/asmat';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-update-asmat',
@@ -13,7 +13,8 @@ export class UpdateAsmatComponent implements OnInit {
   private asmat: Asmat;
 
   constructor(private asmatService: AsmatService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
     this.asmat = null;
   }
 
@@ -24,6 +25,7 @@ export class UpdateAsmatComponent implements OnInit {
   }
 
   public onAsmatSubmitted(asmat: Asmat) {
-
+    this.asmatService.update(asmat)
+      .subscribe(() => this.router.navigate(['home']));
   }
 }

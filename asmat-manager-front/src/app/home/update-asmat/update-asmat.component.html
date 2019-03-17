@@ -3,7 +3,8 @@
     <h2 class="title">
       Modification des informations de {{ asmat.firstName }} {{ asmat.lastName }}
     </h2>
-    <app-asmat-form (asmatSubmitted)="onAsmatSubmitted($event)">
+    <app-asmat-form (asmatSubmitted)="onAsmatSubmitted($event)"
+                    [initialAsmat]="asmat">
     </app-asmat-form>
   </div>
 </ng-container>

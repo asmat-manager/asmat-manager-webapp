@@ -25,4 +25,8 @@ class AsmatDto {
 
     @NotNull
     private AddressDto address;
+
+    public AsmatDto() {
+        address = new AddressDto();
+    }
 }

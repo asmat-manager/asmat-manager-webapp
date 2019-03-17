@@ -32,7 +32,8 @@ export class AsmatsTableComponent {
       'address',
       'email',
       'phone',
-      'adherent'
+      'adherent',
+      'actions'
     ];
   }
 

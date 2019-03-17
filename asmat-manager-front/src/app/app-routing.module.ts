@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {ListAsmatsComponent} from './home/list-asmats/list-asmats.component';
 import {AddAsmatComponent} from './home/add-asmat/add-asmat.component';
+import {UpdateAsmatComponent} from './home/update-asmat/update-asmat.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddAsmatComponent
+      },
+      {
+        path: 'update/:id',
+        component: UpdateAsmatComponent
       },
       {
         path: '**',

@@ -24,4 +24,8 @@ class Asmat {
 
     @Embedded
     private Address address;
+
+    public Asmat() {
+        this.address = new Address();
+    }
 }

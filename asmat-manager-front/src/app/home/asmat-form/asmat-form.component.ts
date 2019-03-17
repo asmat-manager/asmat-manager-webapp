@@ -32,10 +32,10 @@ export class AsmatFormComponent implements OnInit {
 
     this.asmatForm = this.fb.group({
       firstName: [this.initialAsmat.firstName || '', Validators.required],
-      lastName: [this.initialAsmat.firstName || '', Validators.required],
-      email: [this.initialAsmat.firstName || '', Validators.email],
-      phoneNumber: [this.initialAsmat.firstName || '', CustomValidators.phone],
-      adherent: false,
+      lastName: [this.initialAsmat.lastName || '', Validators.required],
+      email: [this.initialAsmat.email || '', Validators.email],
+      phoneNumber: [this.initialAsmat.phoneNumber || '', CustomValidators.phone],
+      adherent: this.initialAsmat.adherent || false,
       address: this.fb.group({
         streetNo: this.initialAsmat.address.streetNo || '',
         street: this.initialAsmat.address.street || '',
@@ -47,6 +47,7 @@ export class AsmatFormComponent implements OnInit {
 
   public onSubmit() {
     const asmat = this.asmatForm.value as Asmat;
+    asmat.id = this.initialAsmat.id;
     this.asmatSubmitted.emit(asmat);
   }
 
