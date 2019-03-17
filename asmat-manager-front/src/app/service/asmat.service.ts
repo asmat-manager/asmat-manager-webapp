@@ -25,4 +25,8 @@ export class AsmatService {
   public update(asmat: Asmat): Observable<Asmat> {
     return this.http.put<Asmat>(`${AppConfig.API_URL}/asmats/${asmat.id}`, asmat);
   }
+
+  public deleteById(id: number): Observable<void> {
+    return this.http.delete<void>(`${AppConfig.API_URL}/asmats/${id}`);
+  }
 }

@@ -43,6 +43,12 @@
          [routerLink]="['update', asmat.id]">
         <mat-icon>edit</mat-icon>
       </a>
+      <button mat-icon-button
+              color="warn"
+              type="button"
+              (click)="onDeleteClicked(asmat)">
+        <mat-icon>delete</mat-icon>
+      </button>
     </td>
   </ng-container>
 

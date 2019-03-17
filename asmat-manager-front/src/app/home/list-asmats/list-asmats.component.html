@@ -29,6 +29,7 @@
     Affichage de {{ filteredAsmats.length }} assistantes maternelles :
   </h3>
 
-  <app-asmats-table [asmats]="filteredAsmats">
+  <app-asmats-table [asmats]="filteredAsmats"
+                    (deleteClicked)="onDeleteClicked($event)">
   </app-asmats-table>
 </div>
