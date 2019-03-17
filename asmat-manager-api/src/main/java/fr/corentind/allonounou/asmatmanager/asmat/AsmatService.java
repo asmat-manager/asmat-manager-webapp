@@ -14,8 +14,9 @@ public class AsmatService {
     private AsmatRepository asmatRepository;
 
     @Autowired
-    public AsmatService(ModelMapper modelMapper) {
+    public AsmatService(ModelMapper modelMapper, AsmatRepository asmatRepository) {
         this.modelMapper = modelMapper;
+        this.asmatRepository = asmatRepository;
     }
 
     List<AsmatDto> getAll() {
