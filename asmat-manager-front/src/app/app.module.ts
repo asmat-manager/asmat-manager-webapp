@@ -17,7 +17,7 @@ import {MaterialModule} from './material/material.module';
 import { ListAsmatsComponent } from './home/list-asmats/list-asmats.component';
 import { AsmatsTableComponent } from './home/list-asmats/asmats-table/asmats-table.component';
 import {AsmatService} from './service/asmat.service';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AsmatFilterPipe } from './home/list-asmats/asmat-filter.pipe';
 import { AsmatFormComponent } from './home/asmat-form/asmat-form.component';
 import { AddAsmatComponent } from './home/add-asmat/add-asmat.component';
@@ -40,7 +40,8 @@ import { AddAsmatComponent } from './home/add-asmat/add-asmat.component';
     HttpClientModule,
     AppRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ElectronService,

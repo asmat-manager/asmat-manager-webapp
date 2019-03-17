@@ -1,3 +1,44 @@
-<p>
-  asmat-form works!
-</p>
+<form novalidate [formGroup]="asmatForm">
+  <div class="row">
+    <mat-form-field class="col-6">
+      <input matInput
+             type="text"
+             formControlName="firstName"/>
+      <mat-label>Prénom</mat-label>
+      <mat-error>Le prénom est requis</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-6">
+      <input matInput
+             type="text"
+             formControlName="lastName"/>
+      <mat-label>Nom</mat-label>
+      <mat-error>Le nom est requis</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field class="col-4">
+      <input matInput
+             type="tel"
+             formControlName="phoneNumber"/>
+      <mat-label>N° de téléphone</mat-label>
+      <mat-error>Le format du numéro est incorrect</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-8">
+      <input matInput
+             type="email"
+             formControlName="email"/>
+      <mat-label>E-mail</mat-label>
+      <mat-error>Le format de l'adresse e-mail est incorrect</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="submit-btn-wrapper">
+    <button mat-raised-button
+            color="accent">
+      Valider
+    </button>
+  </div>
+</form>

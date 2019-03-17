@@ -7,6 +7,13 @@
              [(ngModel)]="searchInput"/>
       <mat-label>Recherche</mat-label>
     </mat-form-field>
+    <div class="add-btn-wrapper">
+      <a mat-raised-button
+         routerLink="add"
+         color="accent">
+        Ajouter
+      </a>
+    </div>
   </div>
 
   <app-asmats-table [asmats]="asmats | asmatFilter:searchInput">
