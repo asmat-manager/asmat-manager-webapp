@@ -1,4 +1,6 @@
 <div class="container">
+  <h2 class="title">Liste des assistantes maternelles</h2>
+
   <div class="inputs-container">
     <mat-form-field class="full-width">
       <input matInput
@@ -23,6 +25,10 @@
     </div>
   </div>
 
-  <app-asmats-table [asmats]="asmats | asmatFilter:filter">
+  <h3>
+    Affichage de {{ filteredAsmats.length }} assistantes maternelles :
+  </h3>
+
+  <app-asmats-table [asmats]="filteredAsmats">
   </app-asmats-table>
 </div>
