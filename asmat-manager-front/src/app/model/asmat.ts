@@ -6,5 +6,6 @@ export interface Asmat {
   lastName: string;
   phoneNumber: string;
   email: string;
+  adherent: boolean;
   address: Address;
 }

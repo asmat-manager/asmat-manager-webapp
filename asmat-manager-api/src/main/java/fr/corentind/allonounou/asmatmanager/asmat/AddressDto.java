@@ -3,7 +3,7 @@ package fr.corentind.allonounou.asmatmanager.asmat;
 import lombok.Data;
 
 @Data
-public class AddressDto {
+class AddressDto {
 
     private String streetNo;
     private String street;
