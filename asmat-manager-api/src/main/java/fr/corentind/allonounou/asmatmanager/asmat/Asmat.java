@@ -10,10 +10,11 @@ import javax.persistence.*;
 class Asmat {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    private String email;
 }
