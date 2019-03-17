@@ -2,10 +2,10 @@ package fr.corentind.allonounou.asmatmanager.asmat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -22,6 +22,14 @@ public class AsmatController {
     @GetMapping
     public ResponseEntity<List<AsmatDto>> getAll() {
         return ResponseEntity.ok(asmatService.getAll());
+    }
+
+    @PostMapping
+    public ResponseEntity<AsmatDto> create(@RequestBody @Valid final AsmatDto asmatDto) {
+        final AsmatDto createdAsmatDto = asmatService.create(asmatDto);
+        return ResponseEntity
+                .created(URI.create(String.format("/asmats/%d", createdAsmatDto.getId())))
+                .body(createdAsmatDto);
     }
 
 }

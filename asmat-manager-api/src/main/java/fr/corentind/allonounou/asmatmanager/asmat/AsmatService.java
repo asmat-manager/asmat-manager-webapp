@@ -26,8 +26,16 @@ public class AsmatService {
                 .collect(Collectors.toList());
     }
 
+    AsmatDto create(final AsmatDto asmatDto) {
+        final Asmat asmatToSave = mapAsmatDtoToAsmat(asmatDto);
+        return mapAsmatToAsmatDto(asmatRepository.save(asmatToSave));
+    }
+
     private AsmatDto mapAsmatToAsmatDto(final Asmat asmat) {
         return modelMapper.map(asmat, AsmatDto.class);
     }
 
+    private Asmat mapAsmatDtoToAsmat(final AsmatDto asmatDto) {
+        return modelMapper.map(asmatDto, Asmat.class);
+    }
 }
