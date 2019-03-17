@@ -10,7 +10,8 @@ export class AsmatFilterPipe implements PipeTransform {
     const kw = keyword.trim().toLowerCase();
     return asmats.filter(asmat =>
       asmat.firstName.toLowerCase().startsWith(kw) ||
-      asmat.lastName.toLowerCase().startsWith(kw));
+      asmat.lastName.toLowerCase().startsWith(kw) ||
+      (asmat.address && asmat.address.city && asmat.address.city.toLowerCase().startsWith(kw)));
   }
 
 }
