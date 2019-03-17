@@ -10,9 +10,11 @@ import {AsmatService} from '../../service/asmat.service';
 export class ListAsmatsComponent implements OnInit {
 
   public asmats: Asmat[];
+  public searchInput: string;
 
   constructor(private asmatService: AsmatService) {
     this.asmats = [];
+    this.searchInput = '';
   }
 
   public ngOnInit() {

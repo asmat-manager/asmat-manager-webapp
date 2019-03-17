@@ -1,2 +1,14 @@
-<app-asmats-table [asmats]="asmats">
-</app-asmats-table>
+<div class="container">
+  <div class="inputs-container">
+    <mat-form-field class="full-width">
+      <input matInput
+             type="text"
+             placeholder="Rechercher par nom/prénom..."
+             [(ngModel)]="searchInput"/>
+      <mat-label>Recherche</mat-label>
+    </mat-form-field>
+  </div>
+
+  <app-asmats-table [asmats]="asmats | asmatFilter:searchInput">
+  </app-asmats-table>
+</div>

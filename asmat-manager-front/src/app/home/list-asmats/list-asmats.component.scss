@@ -1,0 +1,17 @@
+.container {
+  position: relative;
+  top: 5vh;
+
+  .inputs-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+  }
+}
+
+.full-width {
+  width: 100%;
+}

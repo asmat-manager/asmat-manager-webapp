@@ -17,9 +17,8 @@ import {MaterialModule} from './material/material.module';
 import { ListAsmatsComponent } from './home/list-asmats/list-asmats.component';
 import { AsmatsTableComponent } from './home/list-asmats/asmats-table/asmats-table.component';
 import {AsmatService} from './service/asmat.service';
-
-// NG Translate
-
+import {FormsModule} from '@angular/forms';
+import { AsmatFilterPipe } from './home/list-asmats/asmat-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -28,14 +27,16 @@ import {AsmatService} from './service/asmat.service';
     HomeComponent,
     NavbarComponent,
     ListAsmatsComponent,
-    AsmatsTableComponent
+    AsmatsTableComponent,
+    AsmatFilterPipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [
     ElectronService,
