@@ -35,6 +35,40 @@
     </mat-form-field>
   </div>
 
+  <ng-container formGroupName="address">
+    <div class="row">
+      <mat-form-field class="col-2">
+        <input matInput
+               type="text"
+               formControlName="streetNo"/>
+        <mat-label>N° de rue</mat-label>
+      </mat-form-field>
+
+      <mat-form-field class="col-10">
+        <input matInput
+               type="text"
+               formControlName="street"/>
+        <mat-label>Rue</mat-label>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-4">
+        <input matInput
+               type="text"
+               formControlName="postalCode"/>
+        <mat-label>Code postal</mat-label>
+      </mat-form-field>
+
+      <mat-form-field class="col-8">
+        <input matInput
+               type="text"
+               formControlName="city"/>
+        <mat-label>Ville</mat-label>
+      </mat-form-field>
+    </div>
+  </ng-container>
+
   <div class="buttons-bar">
     <div>
       <button mat-raised-button

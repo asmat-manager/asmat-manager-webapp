@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Location} from '@angular/common';
 import {CustomValidators} from '../../validators/validators';
 import {Asmat} from '../../model/asmat';
+import {Address} from '../../model/address';
 
 @Component({
   selector: 'app-asmat-form',
@@ -25,13 +26,21 @@ export class AsmatFormComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.initialAsmat = this.initialAsmat || {} as Asmat;
+    this.initialAsmat = this.initialAsmat || {
+      address: {} as Address
+    } as Asmat;
 
     this.asmatForm = this.fb.group({
       firstName: [this.initialAsmat.firstName || '', Validators.required],
       lastName: [this.initialAsmat.firstName || '', Validators.required],
       email: [this.initialAsmat.firstName || '', Validators.email],
-      phoneNumber: [this.initialAsmat.firstName || '', CustomValidators.phone]
+      phoneNumber: [this.initialAsmat.firstName || '', CustomValidators.phone],
+      address: this.fb.group({
+        streetNo: this.initialAsmat.address.streetNo || '',
+        street: this.initialAsmat.address.street || '',
+        postalCode: [this.initialAsmat.address.postalCode || '', Validators.pattern(/\d{5}/)],
+        city: this.initialAsmat.address.city || ''
+      })
     });
   }
 
