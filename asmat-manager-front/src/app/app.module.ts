@@ -10,6 +10,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ElectronService} from './electron/electron.service';
+import {WebviewDirective} from './electron/webview.directive';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './home/navbar/navbar.component';
+import {MaterialModule} from './material/material.module';
 
 // NG Translate
 
@@ -17,12 +21,16 @@ import {ElectronService} from './electron/electron.service';
 @NgModule({
   declarations: [
     AppComponent,
+    WebviewDirective,
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule
   ],
   providers: [
     ElectronService
