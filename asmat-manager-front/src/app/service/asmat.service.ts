@@ -13,4 +13,8 @@ export class AsmatService {
   public getAll(): Observable<Asmat[]> {
     return this.http.get<Asmat[]>(`${AppConfig.API_URL}/asmats`);
   }
+
+  public create(asmat: Asmat): Observable<Asmat> {
+    return this.http.post<Asmat>(`${AppConfig.API_URL}/asmats`, asmat);
+  }
 }

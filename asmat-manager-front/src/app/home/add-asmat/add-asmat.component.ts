@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {Asmat} from '../../model/asmat';
+import {AsmatService} from '../../service/asmat.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-asmat',
   templateUrl: './add-asmat.component.html',
   styleUrls: ['./add-asmat.component.scss']
 })
-export class AddAsmatComponent implements OnInit {
+export class AddAsmatComponent {
 
-  constructor() { }
+  constructor(private asmatService: AsmatService,
+              private router: Router) { }
 
-  ngOnInit() {
+  public onAsmatSubmitted(asmat: Asmat) {
+    this.asmatService.create(asmat)
+      .subscribe(() => this.router.navigate(['home']));
   }
-
 }

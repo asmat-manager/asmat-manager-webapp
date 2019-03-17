@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Location} from '@angular/common';
 import {CustomValidators} from '../../validators/validators';
 import {Asmat} from '../../model/asmat';
 
@@ -11,22 +12,35 @@ import {Asmat} from '../../model/asmat';
 export class AsmatFormComponent implements OnInit {
 
   @Input()
-  public asmat?: Asmat;
+  public initialAsmat?: Asmat;
+
+  @Output()
+  public asmatSubmitted: EventEmitter<Asmat>;
 
   public asmatForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private location: Location) {
+    this.asmatSubmitted = new EventEmitter<Asmat>();
   }
 
   public ngOnInit() {
-    this.asmat = this.asmat || {};
+    this.initialAsmat = this.initialAsmat || {} as Asmat;
 
     this.asmatForm = this.fb.group({
-      firstName: [this.asmat.firstName || '', Validators.required],
-      lastName: [this.asmat.firstName || '', Validators.required],
-      email: [this.asmat.firstName || '', Validators.email],
-      phoneNumber: [this.asmat.firstName || '', CustomValidators.phone]
+      firstName: [this.initialAsmat.firstName || '', Validators.required],
+      lastName: [this.initialAsmat.firstName || '', Validators.required],
+      email: [this.initialAsmat.firstName || '', Validators.email],
+      phoneNumber: [this.initialAsmat.firstName || '', CustomValidators.phone]
     });
   }
 
+  public onSubmit() {
+    const asmat = this.asmatForm.value as Asmat;
+    this.asmatSubmitted.emit(asmat);
+  }
+
+  public back() {
+    this.location.back();
+  }
 }
