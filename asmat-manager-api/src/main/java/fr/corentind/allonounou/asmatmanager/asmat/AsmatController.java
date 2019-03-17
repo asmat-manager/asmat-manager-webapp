@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.xml.ws.Response;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +44,13 @@ public class AsmatController {
     public ResponseEntity<AsmatDto> update(@PathVariable("id") final Long id,
                                            @RequestBody @Valid final AsmatDto asmatDto) {
         return ResponseEntity.of(asmatService.update(id, asmatDto));
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity deleteById(@PathVariable("id") final Long id) {
+        return asmatService.deleteById(id) ?
+                ResponseEntity.noContent().build() :
+                ResponseEntity.notFound().build();
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

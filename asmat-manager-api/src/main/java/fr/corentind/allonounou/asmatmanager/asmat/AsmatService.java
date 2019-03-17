@@ -47,6 +47,14 @@ public class AsmatService {
                 .map(this::mapAsmatToAsmatDto);
     }
 
+    boolean deleteById(final Long id) {
+        if (asmatRepository.existsById(id)) {
+            asmatRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
     private AsmatDto mapAsmatToAsmatDto(final Asmat asmat) {
         return modelMapper.map(asmat, AsmatDto.class);
     }
