@@ -19,6 +19,8 @@ import { AsmatsTableComponent } from './home/list-asmats/asmats-table/asmats-tab
 import {AsmatService} from './service/asmat.service';
 import {FormsModule} from '@angular/forms';
 import { AsmatFilterPipe } from './home/list-asmats/asmat-filter.pipe';
+import { AsmatFormComponent } from './home/asmat-form/asmat-form.component';
+import { AddAsmatComponent } from './home/add-asmat/add-asmat.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AsmatFilterPipe } from './home/list-asmats/asmat-filter.pipe';
     NavbarComponent,
     ListAsmatsComponent,
     AsmatsTableComponent,
-    AsmatFilterPipe
+    AsmatFilterPipe,
+    AsmatFormComponent,
+    AddAsmatComponent
   ],
   imports: [
     BrowserModule,
