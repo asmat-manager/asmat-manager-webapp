@@ -79,5 +79,9 @@
     "wait-on": "3.2.0",
     "webdriver-manager": "12.1.0",
     "zone.js": "0.8.29"
+  },
+  "dependencies": {
+    "@angular/cdk": "^7.3.4",
+    "@angular/material": "^7.3.4"
   }
 }
