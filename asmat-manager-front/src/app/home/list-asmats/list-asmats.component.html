@@ -7,6 +7,13 @@
              [(ngModel)]="searchInput"/>
       <mat-label>Recherche</mat-label>
     </mat-form-field>
+
+    <mat-slide-toggle [(ngModel)]="adherentOnly"
+                      labelPosition="before"
+                      class="adherent-toggle">
+      Adhérentes seulement
+    </mat-slide-toggle>
+
     <div class="add-btn-wrapper">
       <a mat-raised-button
          routerLink="add"
@@ -16,6 +23,6 @@
     </div>
   </div>
 
-  <app-asmats-table [asmats]="asmats | asmatFilter:searchInput">
+  <app-asmats-table [asmats]="asmats | asmatFilter:filter">
   </app-asmats-table>
 </div>
