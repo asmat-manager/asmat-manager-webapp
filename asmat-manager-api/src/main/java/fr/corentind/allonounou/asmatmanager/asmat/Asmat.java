@@ -17,4 +17,7 @@ class Asmat {
     private String lastName;
     private String phoneNumber;
     private String email;
+
+    @Embedded
+    private Address address;
 }

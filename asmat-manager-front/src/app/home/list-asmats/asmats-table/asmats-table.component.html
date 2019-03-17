@@ -11,7 +11,12 @@
 
   <ng-container matColumnDef="address">
     <th mat-header-cell *matHeaderCellDef>Adresse</th>
-    <td mat-cell *matCellDef="let asmat"></td>
+    <td mat-cell *matCellDef="let asmat">
+      <ng-container *ngIf="asmat.address">
+        {{ asmat.address.streetNo }} {{ asmat.address.street }},
+        {{ asmat.address.postalCode }} {{ asmat.address.city }}
+      </ng-container>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="email">
