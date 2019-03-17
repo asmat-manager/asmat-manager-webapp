@@ -16,6 +16,7 @@ import { NavbarComponent } from './home/navbar/navbar.component';
 import {MaterialModule} from './material/material.module';
 import { ListAsmatsComponent } from './home/list-asmats/list-asmats.component';
 import { AsmatsTableComponent } from './home/list-asmats/asmats-table/asmats-table.component';
+import {AsmatService} from './service/asmat.service';
 
 // NG Translate
 
@@ -37,7 +38,8 @@ import { AsmatsTableComponent } from './home/list-asmats/asmats-table/asmats-tab
     MaterialModule
   ],
   providers: [
-    ElectronService
+    ElectronService,
+    AsmatService
   ],
   bootstrap: [AppComponent]
 })
