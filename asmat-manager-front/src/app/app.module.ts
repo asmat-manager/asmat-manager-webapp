@@ -21,6 +21,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AsmatFilterPipe } from './home/list-asmats/asmat-filter.pipe';
 import { AsmatFormComponent } from './home/asmat-form/asmat-form.component';
 import { AddAsmatComponent } from './home/add-asmat/add-asmat.component';
+import { UpdateAsmatComponent } from './home/update-asmat/update-asmat.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AddAsmatComponent } from './home/add-asmat/add-asmat.component';
     AsmatsTableComponent,
     AsmatFilterPipe,
     AsmatFormComponent,
-    AddAsmatComponent
+    AddAsmatComponent,
+    UpdateAsmatComponent
   ],
   imports: [
     BrowserModule,
