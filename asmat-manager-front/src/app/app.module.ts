@@ -26,6 +26,7 @@ import {DeleteConfirmModalComponent} from './home/delete-confirm-modal/delete-co
 import {AuthService} from './service/auth.service';
 import {TokenInterceptor} from './service/interceptor/token.interceptor';
 import {UnauthorizedInterceptor} from './service/interceptor/unauthorized.interceptor';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {UnauthorizedInterceptor} from './service/interceptor/unauthorized.interc
     AsmatFormComponent,
     AddAsmatComponent,
     UpdateAsmatComponent,
-    DeleteConfirmModalComponent
+    DeleteConfirmModalComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

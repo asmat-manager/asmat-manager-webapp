@@ -12,7 +12,7 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError((error: HttpErrorResponse) => {
-      if (error.status === 401) {
+      if (!error.url.endsWith('/login') && error.status === 401) {
         // Redirect to login page
         return NEVER;
       } else {

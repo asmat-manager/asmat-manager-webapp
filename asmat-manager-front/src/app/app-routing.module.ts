@@ -4,8 +4,13 @@ import {HomeComponent} from './home/home.component';
 import {ListAsmatsComponent} from './home/list-asmats/list-asmats.component';
 import {AddAsmatComponent} from './home/add-asmat/add-asmat.component';
 import {UpdateAsmatComponent} from './home/update-asmat/update-asmat.component';
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent
+  },
   {
     path: 'home',
     component: HomeComponent,
@@ -30,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/home'
+    redirectTo: '/login'
   }
 ];
 
