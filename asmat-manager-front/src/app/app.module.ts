@@ -27,6 +27,7 @@ import {AuthService} from './service/auth.service';
 import {TokenInterceptor} from './service/interceptor/token.interceptor';
 import {UnauthorizedInterceptor} from './service/interceptor/unauthorized.interceptor';
 import { LoginComponent } from './login/login.component';
+import {AuthGuard} from './service/guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { LoginComponent } from './login/login.component';
     ElectronService,
     AsmatService,
     AuthService,
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

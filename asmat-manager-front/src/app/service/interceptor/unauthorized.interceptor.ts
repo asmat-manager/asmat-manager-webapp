@@ -3,17 +3,20 @@ import {NEVER, Observable, throwError} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {catchError} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class UnauthorizedInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError((error: HttpErrorResponse) => {
       if (!error.url.endsWith('/login') && error.status === 401) {
-        // Redirect to login page
+        this.authService.clearToken();
+        this.router.navigate(['login']);
         return NEVER;
       } else {
         return throwError(error);
