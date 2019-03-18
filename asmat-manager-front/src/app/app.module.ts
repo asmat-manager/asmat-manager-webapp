@@ -3,7 +3,7 @@ import '../polyfills';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 
@@ -23,6 +23,9 @@ import {AsmatFormComponent} from './home/asmat-form/asmat-form.component';
 import {AddAsmatComponent} from './home/add-asmat/add-asmat.component';
 import {UpdateAsmatComponent} from './home/update-asmat/update-asmat.component';
 import {DeleteConfirmModalComponent} from './home/delete-confirm-modal/delete-confirm-modal.component';
+import {AuthService} from './service/auth.service';
+import {TokenInterceptor} from './service/interceptor/token.interceptor';
+import {UnauthorizedInterceptor} from './service/interceptor/unauthorized.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,18 @@ import {DeleteConfirmModalComponent} from './home/delete-confirm-modal/delete-co
   ],
   providers: [
     ElectronService,
-    AsmatService
+    AsmatService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
+      multi: true
+    }
   ],
   entryComponents: [DeleteConfirmModalComponent],
   bootstrap: [AppComponent]
