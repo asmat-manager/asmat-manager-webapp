@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class UpdateAsmatComponent implements OnInit {
 
-  private asmat: Asmat;
+  public asmat: Asmat;
 
   constructor(private asmatService: AsmatService,
               private route: ActivatedRoute,
