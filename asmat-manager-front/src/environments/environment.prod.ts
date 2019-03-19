@@ -1,5 +1,5 @@
 export const AppConfig = {
   production: true,
   environment: 'PROD',
-  API_URL: 'http://localhost:8080'
+  API_URL: 'https://asmat-api.cocorp.fr'
 };
