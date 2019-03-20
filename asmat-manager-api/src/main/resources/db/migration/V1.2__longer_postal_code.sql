@@ -1,0 +1,2 @@
+ALTER TABLE asmat
+  MODIFY street_no VARCHAR(10);
