@@ -1,7 +1,11 @@
 @import "~@angular/material/theming";
 @import "palette";
 
-@include mat-core();
+$typography: mat-typography-config(
+  $font-family: 'Poppins, sans-serif'
+);
+
+@include mat-core($typography);
 
 $primary-palette: mat-palette($primary-colors, 400, 100, 700);
 $accent-palette: mat-palette($accent-colors, 500, 200, 800);
