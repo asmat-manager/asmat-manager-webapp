@@ -30,6 +30,8 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './service/guard/auth.guard';
 import {ToastService} from './service/toast.service';
 import {NoConnectionInterceptor} from './service/interceptor/no-connection.interceptor';
+import { ServerErrorModalComponent } from './server-error-modal/server-error-modal.component';
+import {ServerErrorInterceptor} from './service/interceptor/server-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import {NoConnectionInterceptor} from './service/interceptor/no-connection.inter
     AddAsmatComponent,
     UpdateAsmatComponent,
     DeleteConfirmModalComponent,
-    LoginComponent
+    LoginComponent,
+    ServerErrorModalComponent
   ],
   imports: [
     BrowserModule,
@@ -77,8 +80,13 @@ import {NoConnectionInterceptor} from './service/interceptor/no-connection.inter
       useClass: NoConnectionInterceptor,
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ServerErrorInterceptor,
+      multi: true
+    }
   ],
-  entryComponents: [DeleteConfirmModalComponent],
+  entryComponents: [DeleteConfirmModalComponent, ServerErrorModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
