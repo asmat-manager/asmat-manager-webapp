@@ -69,6 +69,29 @@
     </div>
   </ng-container>
 
+  <div class="row">
+    <mat-form-field class="col-5">
+      <input matInput
+             type="date"
+             formControlName="deadlineDate"/>
+      <mat-label>Date d'échéance</mat-label>
+    </mat-form-field>
+
+    <mat-form-field class="col-5">
+      <input matInput
+             type="date"
+             formControlName="remindDate"/>
+      <mat-label>Date de rappel</mat-label>
+    </mat-form-field>
+
+    <mat-form-field class="col-2">
+      <input matInput
+             type="number"
+             formControlName="receptions"/>
+      <mat-label>Nombre d'accueils</mat-label>
+    </mat-form-field>
+  </div>
+
   <div class="adherent-toggle-wrapper">
     <mat-slide-toggle formControlName="adherent"
                       labelPosition="before">
