@@ -28,6 +28,7 @@ import {TokenInterceptor} from './service/interceptor/token.interceptor';
 import {UnauthorizedInterceptor} from './service/interceptor/unauthorized.interceptor';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './service/guard/auth.guard';
+import {ToastService} from './service/toast.service';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {AuthGuard} from './service/guard/auth.guard';
     ElectronService,
     AsmatService,
     AuthService,
+    ToastService,
     AuthGuard,
     {provide: LOCALE_ID, useValue: 'fr'},
     {
