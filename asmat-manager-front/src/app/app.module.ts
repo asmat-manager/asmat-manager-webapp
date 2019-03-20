@@ -29,6 +29,7 @@ import {UnauthorizedInterceptor} from './service/interceptor/unauthorized.interc
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './service/guard/auth.guard';
 import {ToastService} from './service/toast.service';
+import {NoConnectionInterceptor} from './service/interceptor/no-connection.interceptor';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,12 @@ import {ToastService} from './service/toast.service';
       provide: HTTP_INTERCEPTORS,
       useClass: UnauthorizedInterceptor,
       multi: true
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NoConnectionInterceptor,
+      multi: true
+    },
   ],
   entryComponents: [DeleteConfirmModalComponent],
   bootstrap: [AppComponent]
