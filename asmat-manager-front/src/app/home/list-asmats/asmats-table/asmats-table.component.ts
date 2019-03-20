@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Asmat} from '../../../model/asmat';
 import {Address} from '../../../model/address';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-asmats-table',
@@ -15,9 +16,13 @@ export class AsmatsTableComponent {
   @Output()
   public deleteClicked: EventEmitter<Asmat>;
 
+  @Input()
+  public displayAll: boolean;
+
   constructor() {
     this.asmats = [];
     this.deleteClicked = new EventEmitter<Asmat>();
+    this.displayAll = false;
   }
 
   public formatAddress(address: Address): string {
@@ -33,16 +38,24 @@ export class AsmatsTableComponent {
     this.deleteClicked.emit(asmat);
   }
 
-  get displayedColumns(): string[] {
+  get displayColumns(): string[] {
     return [
-      'firstName',
       'lastName',
-      'address',
-      'email',
-      'phone',
+      'firstName',
+      ...this.additionalColumns,
+      'deadlineDate',
+      'remindDate',
+      'receptions',
       'adherent',
       'actions'
     ];
   }
 
+  private get additionalColumns(): string[] {
+    return this.displayAll ? [
+      'address',
+      'email',
+      'phone'
+    ] : [];
+  }
 }

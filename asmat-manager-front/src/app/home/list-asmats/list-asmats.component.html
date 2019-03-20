@@ -25,11 +25,18 @@
     </div>
   </div>
 
-  <h3>
-    Affichage de {{ filteredAsmats.length }} assistantes maternelles :
-  </h3>
+  <div class="results-header">
+    <h3>
+      Affichage de {{ filteredAsmats.length }} assistantes maternelles :
+    </h3>
+    <mat-slide-toggle [(ngModel)]="displayAll"
+                      labelPosition="before">
+      Afficher toutes les données
+    </mat-slide-toggle>
+  </div>
 
   <app-asmats-table [asmats]="filteredAsmats"
+                    [displayAll]="displayAll"
                     (deleteClicked)="onDeleteClicked($event)">
   </app-asmats-table>
 </div>

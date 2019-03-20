@@ -2,6 +2,14 @@
   position: relative;
   top: 5vh;
 
+  .results-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
   .inputs-container {
     display: flex;
     flex-flow: row nowrap;

@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import '../polyfills';
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
@@ -26,7 +26,7 @@ import {DeleteConfirmModalComponent} from './home/delete-confirm-modal/delete-co
 import {AuthService} from './service/auth.service';
 import {TokenInterceptor} from './service/interceptor/token.interceptor';
 import {UnauthorizedInterceptor} from './service/interceptor/unauthorized.interceptor';
-import { LoginComponent } from './login/login.component';
+import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './service/guard/auth.guard';
 
 @NgModule({
@@ -58,6 +58,7 @@ import {AuthGuard} from './service/guard/auth.guard';
     AsmatService,
     AuthService,
     AuthGuard,
+    {provide: LOCALE_ID, useValue: 'fr'},
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
