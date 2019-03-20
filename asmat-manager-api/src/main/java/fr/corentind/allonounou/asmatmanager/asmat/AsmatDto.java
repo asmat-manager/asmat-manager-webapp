@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 
 @Data
 class AsmatDto {
@@ -16,6 +17,9 @@ class AsmatDto {
     @NotEmpty
     private String lastName;
     private String email;
+    private LocalDate deadlineDate;
+    private LocalDate remindDate;
+    private Integer receptions;
 
     @NotNull
     private Boolean adherent;
