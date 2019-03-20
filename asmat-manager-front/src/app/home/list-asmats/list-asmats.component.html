@@ -1,42 +1,50 @@
 <div class="container">
   <h2 class="title">Liste des assistantes maternelles</h2>
 
-  <div class="inputs-container">
-    <mat-form-field class="full-width">
-      <input matInput
-             type="text"
-             placeholder="Rechercher par nom, prénom ou ville..."
-             [(ngModel)]="searchInput"/>
-      <mat-label>Recherche</mat-label>
-    </mat-form-field>
+  <ng-container *ngIf="asmatsLoaded; else loading">
+    <div class="inputs-container">
+      <mat-form-field class="full-width">
+        <input matInput
+               type="text"
+               placeholder="Rechercher par nom, prénom ou ville..."
+               [(ngModel)]="searchInput"/>
+        <mat-label>Recherche</mat-label>
+      </mat-form-field>
 
-    <mat-slide-toggle [(ngModel)]="adherentOnly"
-                      labelPosition="before"
-                      class="adherent-toggle">
-      Adhérentes seulement
-    </mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="adherentOnly"
+                        labelPosition="before"
+                        class="adherent-toggle">
+        Adhérentes seulement
+      </mat-slide-toggle>
 
-    <div class="add-btn-wrapper">
-      <a mat-raised-button
-         routerLink="add"
-         color="accent">
-        Ajouter
-      </a>
+      <div class="add-btn-wrapper">
+        <a mat-raised-button
+           routerLink="add"
+           color="accent">
+          Ajouter
+        </a>
+      </div>
     </div>
-  </div>
 
-  <div class="results-header">
-    <h3>
-      Affichage de {{ filteredAsmats.length }} assistantes maternelles :
-    </h3>
-    <mat-slide-toggle [(ngModel)]="displayAll"
-                      labelPosition="before">
-      Afficher toutes les données
-    </mat-slide-toggle>
-  </div>
+    <div class="results-header">
+      <h3>
+        Affichage de {{ filteredAsmats.length }} assistantes maternelles :
+      </h3>
+      <mat-slide-toggle [(ngModel)]="displayAll"
+                        labelPosition="before">
+        Afficher toutes les données
+      </mat-slide-toggle>
+    </div>
 
-  <app-asmats-table [asmats]="filteredAsmats"
-                    [displayAll]="displayAll"
-                    (deleteClicked)="onDeleteClicked($event)">
-  </app-asmats-table>
+    <app-asmats-table [asmats]="filteredAsmats"
+                      [displayAll]="displayAll"
+                      (deleteClicked)="onDeleteClicked($event)">
+    </app-asmats-table>
+  </ng-container>
 </div>
+
+<ng-template #loading>
+  <div class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

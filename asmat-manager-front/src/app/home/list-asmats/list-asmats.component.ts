@@ -5,7 +5,7 @@ import {AsmatFilter} from './asmat-filter';
 import {AsmatFilterPipe} from './asmat-filter.pipe';
 import {MatDialog} from '@angular/material';
 import {DeleteConfirmModalComponent} from '../delete-confirm-modal/delete-confirm-modal.component';
-import {flatMap} from 'rxjs/operators';
+import {flatMap, tap} from 'rxjs/operators';
 import {NEVER} from 'rxjs';
 import {DeleteConfirmModalData} from '../delete-confirm-modal/delete-confirm-modal-data';
 
@@ -18,22 +18,24 @@ export class ListAsmatsComponent implements OnInit {
 
   public searchInput: string;
   public adherentOnly: boolean;
-  public displayAll: boolean
+  public displayAll: boolean;
+  public asmatsLoaded: boolean;
 
   private asmats: Asmat[];
   private asmatFilterPipe: AsmatFilterPipe;
-
   constructor(private asmatService: AsmatService,
               private dialog: MatDialog) {
     this.asmats = [];
     this.searchInput = '';
     this.adherentOnly = false;
     this.displayAll = false;
+    this.asmatsLoaded = false;
     this.asmatFilterPipe = new AsmatFilterPipe();
   }
 
   public ngOnInit() {
     this.asmatService.getAll()
+      .pipe(tap(() => this.asmatsLoaded = true))
       .subscribe(asmats => this.asmats = asmats);
   }
 

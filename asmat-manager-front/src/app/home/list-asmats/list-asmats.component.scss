@@ -36,3 +36,14 @@
   text-align: center;
   margin-bottom: 32px;
 }
+
+.spinner-container {
+  position: relative;
+  top: 20vh;
+
+  width: 100%;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
