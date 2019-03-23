@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 @Data
-class AsmatDto {
+public class AsmatDto {
 
     private Long id;
 

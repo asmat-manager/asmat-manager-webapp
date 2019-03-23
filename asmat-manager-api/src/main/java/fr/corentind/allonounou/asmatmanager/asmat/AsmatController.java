@@ -1,5 +1,6 @@
 package fr.corentind.allonounou.asmatmanager.asmat;
 
+import fr.corentind.allonounou.asmatmanager.exception.AsmatAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,7 @@ public class AsmatController {
     }
 
     @PostMapping
-    public ResponseEntity<AsmatDto> create(@RequestBody @Valid final AsmatDto asmatDto) {
+    public ResponseEntity<AsmatDto> create(@RequestBody @Valid final AsmatDto asmatDto) throws AsmatAlreadyExistsException {
         final AsmatDto createdAsmatDto = asmatService.create(asmatDto);
         return ResponseEntity
                 .created(URI.create(String.format("/asmats/%d", createdAsmatDto.getId())))
@@ -42,7 +43,7 @@ public class AsmatController {
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<AsmatDto> update(@PathVariable("id") final Long id,
-                                           @RequestBody @Valid final AsmatDto asmatDto) {
+                                           @RequestBody @Valid final AsmatDto asmatDto) throws AsmatAlreadyExistsException {
         return ResponseEntity.of(asmatService.update(id, asmatDto));
     }
 
@@ -57,6 +58,13 @@ public class AsmatController {
     public ResponseEntity<Map<String, String>> handleIllegalArgumentException() {
         final Map<String, String> body = new HashMap<>();
         body.put("message", "ID must not be null and match with body ID.");
+        return ResponseEntity.badRequest().body(body);
+    }
+
+    @ExceptionHandler(AsmatAlreadyExistsException.class)
+    public ResponseEntity<Map<String, String>> handleIllegalArgumentException(AsmatAlreadyExistsException e) {
+        final Map<String, String> body = new HashMap<>();
+        body.put("message", e.getMessage());
         return ResponseEntity.badRequest().body(body);
     }
 }

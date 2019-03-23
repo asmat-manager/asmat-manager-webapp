@@ -1,5 +1,6 @@
 package fr.corentind.allonounou.asmatmanager.asmat;
 
+import fr.corentind.allonounou.asmatmanager.exception.AsmatAlreadyExistsException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,15 +34,24 @@ public class AsmatService {
                 .map(this::mapAsmatToAsmatDto);
     }
 
-    AsmatDto create(final AsmatDto asmatDto) {
+    AsmatDto create(final AsmatDto asmatDto) throws AsmatAlreadyExistsException {
+        if (asmatRepository.existsByFirstNameAndLastName(asmatDto.getFirstName(), asmatDto.getLastName())) {
+            throw new AsmatAlreadyExistsException(asmatDto);
+        }
+
         final Asmat asmatToSave = mapAsmatDtoToAsmat(asmatDto);
         return mapAsmatToAsmatDto(asmatRepository.save(asmatToSave));
     }
 
-    Optional<AsmatDto> update(final Long id, final AsmatDto asmatDto) throws IllegalArgumentException {
+    Optional<AsmatDto> update(final Long id, final AsmatDto asmatDto) throws IllegalArgumentException, AsmatAlreadyExistsException {
         if (asmatDto.getId() == null || !Objects.equals(id, asmatDto.getId())) {
             throw new IllegalArgumentException();
         }
+
+        if (asmatRepository.existsByFirstNameAndLastName(asmatDto.getFirstName(), asmatDto.getLastName())) {
+            throw new AsmatAlreadyExistsException(asmatDto);
+        }
+
         return asmatRepository.findById(id)
                 .map(asmat -> asmatRepository.save(mapAsmatDtoToAsmat(asmatDto)))
                 .map(this::mapAsmatToAsmatDto);

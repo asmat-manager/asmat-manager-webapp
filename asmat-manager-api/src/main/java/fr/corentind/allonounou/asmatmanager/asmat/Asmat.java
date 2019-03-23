@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "asmat")
+@Table(name = "asmat", uniqueConstraints = @UniqueConstraint(columnNames = {"firstName", "lastName"}))
 @Data
 class Asmat {
 
@@ -14,8 +14,12 @@ class Asmat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
     private String cellPhoneNumber;
     private String fixPhoneNumber;
     private String email;
