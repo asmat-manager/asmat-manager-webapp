@@ -34,7 +34,8 @@ export class AsmatFormComponent implements OnInit {
       firstName: [this.initialAsmat.firstName || '', Validators.required],
       lastName: [this.initialAsmat.lastName || '', Validators.required],
       email: [this.initialAsmat.email || '', Validators.email],
-      phoneNumber: [this.initialAsmat.phoneNumber || '', CustomValidators.phone],
+      cellPhoneNumber: [this.initialAsmat.cellPhoneNumber || '', CustomValidators.phone],
+      fixPhoneNumber: [this.initialAsmat.fixPhoneNumber || '', CustomValidators.phone],
       adherent: this.initialAsmat.adherent || false,
       address: this.fb.group({
         streetNo: this.initialAsmat.address.streetNo || '',

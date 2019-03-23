@@ -55,7 +55,8 @@ export class AsmatsTableComponent {
     return this.displayAll ? [
       'address',
       'email',
-      'phone'
+      'fixPhone',
+      'cellPhone'
     ] : [];
   }
 }

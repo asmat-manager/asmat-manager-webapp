@@ -4,7 +4,8 @@ export interface Asmat {
   id: number;
   firstName: string;
   lastName: string;
-  phoneNumber: string;
+  cellPhoneNumber: string;
+  fixPhoneNumber: string;
   email: string;
   adherent: boolean;
   address: Address;

@@ -18,15 +18,23 @@
   </div>
 
   <div class="row">
-    <mat-form-field class="col-4">
+    <mat-form-field class="col-3">
       <input matInput
              type="tel"
-             formControlName="phoneNumber"/>
-      <mat-label>N° de téléphone</mat-label>
+             formControlName="fixPhoneNumber"/>
+      <mat-label>N° de téléphone fixe</mat-label>
       <mat-error>Le format du numéro est incorrect</mat-error>
     </mat-form-field>
 
-    <mat-form-field class="col-8">
+    <mat-form-field class="col-3">
+      <input matInput
+             type="tel"
+             formControlName="cellPhoneNumber"/>
+      <mat-label>N° de téléphone portable</mat-label>
+      <mat-error>Le format du numéro est incorrect</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-6">
       <input matInput
              type="email"
              formControlName="email"/>

@@ -25,7 +25,10 @@ class AsmatDto {
     private Boolean adherent;
 
     @Pattern(regexp = "^((?:(?:\\+|00)33|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4})?$")
-    private String phoneNumber;
+    private String cellPhoneNumber;
+
+    @Pattern(regexp = "^((?:(?:\\+|00)33|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4})?$")
+    private String fixPhoneNumber;
 
     @NotNull
     private AddressDto address;
