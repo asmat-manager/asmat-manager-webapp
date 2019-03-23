@@ -42,7 +42,7 @@ export class AsmatFormComponent implements OnInit {
         postalCode: [this.initialAsmat.address.postalCode || '', Validators.pattern(/\d{5}/)],
         city: this.initialAsmat.address.city || ''
       }),
-      deadlineDate: this.initialAsmat.deadlineDate || null,
+      joiningDate: this.initialAsmat.joiningDate || null,
       remindDate: this.initialAsmat.remindDate || null,
       receptions: this.initialAsmat.receptions || 0
     });

@@ -19,7 +19,7 @@ class Asmat {
     private String phoneNumber;
     private String email;
     private Boolean adherent;
-    private LocalDate deadlineDate;
+    private LocalDate joiningDate;
     private LocalDate remindDate;
     private Integer receptions;
 

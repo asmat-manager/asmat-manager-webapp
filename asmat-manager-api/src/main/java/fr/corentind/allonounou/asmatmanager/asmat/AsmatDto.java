@@ -17,7 +17,7 @@ class AsmatDto {
     @NotEmpty
     private String lastName;
     private String email;
-    private LocalDate deadlineDate;
+    private LocalDate joiningDate;
     private LocalDate remindDate;
     private Integer receptions;
 

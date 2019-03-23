@@ -43,7 +43,7 @@ export class AsmatsTableComponent {
       'lastName',
       'firstName',
       ...this.additionalColumns,
-      'deadlineDate',
+      'joiningDate',
       'remindDate',
       'receptions',
       'adherent',

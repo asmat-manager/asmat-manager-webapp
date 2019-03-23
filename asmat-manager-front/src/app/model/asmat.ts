@@ -8,7 +8,7 @@ export interface Asmat {
   email: string;
   adherent: boolean;
   address: Address;
-  deadlineDate: Date;
+  joiningDate: Date;
   remindDate: Date;
   receptions: number;
 }
