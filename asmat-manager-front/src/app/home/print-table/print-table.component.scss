@@ -29,4 +29,29 @@
       font-size: 0.8em;
     }
   }
+
+  @media print {
+    .title, .button-bar {
+      display: none;
+    }
+
+    td[mat-cell] {
+      line-height: normal;
+      font-size: 0.6em !important;
+      text-align: center;
+      margin: 0 8px;
+    }
+
+    th[mat-header-cell] {
+      line-height: normal;
+      font-size: 0.6em !important;
+      color: black;
+      text-align: center;
+      margin: 0 8px;
+    }
+
+    .icon {
+      font-size: 12px;
+    }
+  }
 }
