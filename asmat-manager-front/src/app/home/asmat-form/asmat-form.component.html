@@ -100,9 +100,34 @@
     </mat-form-field>
   </div>
 
-  <div class="adherent-toggle-wrapper">
-    <mat-slide-toggle formControlName="adherent"
-                      labelPosition="before">
+  <div class="row margin-x">
+    <mat-slide-toggle
+      class="col-max"
+      formControlName="availabilityCommunicated">
+      Disponibilité : {{ availabilityCommunicated ? '' : 'non communiquée' }}
+    </mat-slide-toggle>
+
+    <ng-container *ngIf="availabilityCommunicated">
+      <mat-form-field class="col-6 small-input">
+        <input matInput
+               type="number"
+               formControlName="babyAvailability" />
+        <span matSuffix>bébé(s)</span>
+      </mat-form-field>
+
+      <span> et </span>
+
+      <mat-form-field class="col-6 small-input">
+        <input matInput
+               type="number"
+               formControlName="scholarAvailability" />
+        <span matSuffix>périscolaire(s)</span>
+      </mat-form-field>
+    </ng-container>
+  </div>
+
+  <div class="row margin-x">
+    <mat-slide-toggle formControlName="adherent">
       Adhérente
     </mat-slide-toggle>
   </div>

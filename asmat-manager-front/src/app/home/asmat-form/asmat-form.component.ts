@@ -4,6 +4,7 @@ import {Location} from '@angular/common';
 import {CustomValidators} from '../../validators/validators';
 import {Asmat} from '../../model/asmat';
 import {Address} from '../../model/address';
+import {MatSlideToggleChange} from '@angular/material';
 
 @Component({
   selector: 'app-asmat-form',
@@ -45,7 +46,10 @@ export class AsmatFormComponent implements OnInit {
       }),
       joiningDate: this.initialAsmat.joiningDate || null,
       remindDate: this.initialAsmat.remindDate || null,
-      receptions: this.initialAsmat.receptions || 0
+      receptions: this.initialAsmat.receptions || 0,
+      availabilityCommunicated: this.initialAsmat.availabilityCommunicated || false,
+      babyAvailability: [this.initialAsmat.babyAvailability || 0, Validators.min(0)],
+      scholarAvailability: [this.initialAsmat.scholarAvailability || 0, Validators.min(0)]
     });
   }
 
@@ -57,5 +61,9 @@ export class AsmatFormComponent implements OnInit {
 
   public back() {
     this.location.back();
+  }
+
+  public get availabilityCommunicated(): boolean {
+    return this.asmatForm.get('availabilityCommunicated').value;
   }
 }

@@ -31,6 +31,10 @@ class Asmat {
     @Embedded
     private Address address;
 
+    private Boolean availabilityCommunicated;
+    private Integer babyAvailability;
+    private Integer scholarAvailability;
+
     public Asmat() {
         this.address = new Address();
     }

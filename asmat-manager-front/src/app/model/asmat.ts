@@ -12,4 +12,7 @@ export interface Asmat {
   joiningDate: Date;
   remindDate: Date;
   receptions: number;
+  availabilityCommunicated: boolean;
+  babyAvailability: number;
+  scholarAvailability: number;
 }

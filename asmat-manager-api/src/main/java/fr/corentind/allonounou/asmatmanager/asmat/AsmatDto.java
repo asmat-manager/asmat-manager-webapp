@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDate;
 
 @Data
@@ -32,6 +33,15 @@ public class AsmatDto {
 
     @NotNull
     private AddressDto address;
+
+    @NotNull
+    private Boolean availabilityCommunicated;
+
+    @PositiveOrZero
+    private Integer babyAvailability;
+
+    @PositiveOrZero
+    private Integer scholarAvailability;
 
     public AsmatDto() {
         address = new AddressDto();

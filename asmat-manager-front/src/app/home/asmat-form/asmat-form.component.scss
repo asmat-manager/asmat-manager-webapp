@@ -5,8 +5,16 @@
   align-items: center;
   margin: 16px 0;
 
+  &.margin-x {
+    padding: 0 24px;
+  }
+
   mat-form-field {
     padding: 0 20px;
+
+    &.col-max {
+      flex: 1 1 100%;
+    }
 
     &.col-2 {
       flex: 0 1 16.7%;
@@ -31,6 +39,10 @@
     &.col-10 {
       flex: 0 1 83.3%;
     }
+
+    &.small-input {
+      max-width: 25%;
+    }
   }
 }
 
@@ -42,12 +54,4 @@
 
   margin-top: 30px;
   padding: 0 24px;
-}
-
-.adherent-toggle-wrapper {
-  padding: 0 24px;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-end;
-  align-items: center;
 }
