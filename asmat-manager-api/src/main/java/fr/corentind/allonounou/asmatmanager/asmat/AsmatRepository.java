@@ -10,6 +10,8 @@ import java.util.Optional;
 @Repository
 public interface AsmatRepository extends JpaRepository<Asmat, Long> {
 
+    List<Asmat> findAllByAddress_City(final String city);
+
     @Query("select (count(a) > 0) from Asmat a where lower(a.firstName) = lower(:firstName) and lower(a.lastName) = lower(:lastName)")
     Boolean existsByFirstNameAndLastName(final String firstName, final String lastName);
 

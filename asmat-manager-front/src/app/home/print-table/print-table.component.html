@@ -1,0 +1,94 @@
+<div *ngIf="asmatsLoaded" class="container">
+  <h2 class="title">Aperçu avant impression</h2>
+
+  <div class="button-bar">
+    <div>
+      <button mat-raised-button
+              color="primary"
+              (click)="onCancelClicked()">
+        Annuler
+      </button>
+    </div>
+    <div>
+      <button mat-raised-button
+              color="accent"
+              (click)="onValidate()">
+        Valider et imprimer
+      </button>
+    </div>
+  </div>
+
+  <table mat-table class="table mat-elevation-z2" [dataSource]="asmats">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nom</th>
+      <td mat-cell *matCellDef="let asmat">
+        {{ asmat.firstName }} {{ asmat.lastName }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Adresse</th>
+      <td mat-cell
+          *matCellDef="let asmat">
+        {{ formatAddress(asmat.address) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phones">
+      <th mat-header-cell *matHeaderCellDef>Téléphone</th>
+      <td mat-cell *matCellDef="let asmat">
+        <div *ngIf="asmat.fixPhoneNumber">Fixe: {{ asmat.fixPhoneNumber }}</div>
+        <div *ngIf="asmat.cellPhoneNumber">Port: {{ asmat.cellPhoneNumber }}</div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mail">
+      <th mat-header-cell *matHeaderCellDef>E-mail</th>
+      <td mat-cell *matCellDef="let asmat">
+        {{ asmat.email }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="receptions">
+      <th mat-header-cell *matHeaderCellDef>Nb. d'accueils</th>
+      <td mat-cell *matCellDef="let asmat">
+        {{ asmat.receptions }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="adherent">
+      <th mat-header-cell *matHeaderCellDef>Adhérente</th>
+      <td mat-cell
+          *matCellDef="let asmat">
+        <mat-icon *ngIf="asmat.adherent">
+          check
+        </mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="availability">
+      <th mat-header-cell *matHeaderCellDef>Disponibilité</th>
+      <td mat-cell *matCellDef="let asmat">
+        {{ formatAvailability(asmat) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="joiningDate">
+      <th mat-header-cell *matHeaderCellDef>Adhésion</th>
+      <td mat-cell *matCellDef="let asmat">
+        {{ asmat.joiningDate | date:'shortDate' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="remindDate">
+      <th mat-header-cell *matHeaderCellDef>Rappel</th>
+      <td mat-cell *matCellDef="let asmat">
+        {{ asmat.remindDate | date:'shortDate' }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColumns">
+    </tr>
+  </table>
+</div>

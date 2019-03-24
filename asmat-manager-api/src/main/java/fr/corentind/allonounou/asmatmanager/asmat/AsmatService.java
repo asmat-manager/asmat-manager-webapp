@@ -29,6 +29,13 @@ public class AsmatService {
                 .collect(Collectors.toList());
     }
 
+    List<AsmatDto> getByCity(final String city) {
+        return asmatRepository.findAllByAddress_City(city)
+                .stream()
+                .map(this::mapAsmatToAsmatDto)
+                .collect(Collectors.toList());
+    }
+
     Optional<AsmatDto> getById(final Long id) {
         return asmatRepository.findById(id)
                 .map(this::mapAsmatToAsmatDto);

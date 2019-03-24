@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+  top: 5vh;
+
+  .title {
+    text-align: center;
+  }
+
+  .button-bar {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
+
+    & > * {
+      margin-left: 12px;
+
+      &:not(:last-child) {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  table.table {
+    width: 100%;
+    margin-top: 32px;
+
+    td[mat-cell] {
+      font-size: 0.8em;
+    }
+  }
+}

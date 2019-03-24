@@ -24,7 +24,10 @@ public class AsmatController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AsmatDto>> getAll() {
+    public ResponseEntity<List<AsmatDto>> getAll(@RequestParam(value = "city", required = false) final String city) {
+        if (city != null) {
+            return ResponseEntity.ok(asmatService.getByCity(city));
+        }
         return ResponseEntity.ok(asmatService.getAll());
     }
 

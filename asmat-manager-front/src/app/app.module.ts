@@ -34,6 +34,7 @@ import { ServerErrorModalComponent } from './server-error-modal/server-error-mod
 import {ServerErrorInterceptor} from './service/interceptor/server-error.interceptor';
 import { AsmatDetailsComponent } from './home/asmat-details/asmat-details.component';
 import { PrintModalComponent } from './home/list-asmats/print-modal/print-modal.component';
+import { PrintTableComponent } from './home/print-table/print-table.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { PrintModalComponent } from './home/list-asmats/print-modal/print-modal.
     LoginComponent,
     ServerErrorModalComponent,
     AsmatDetailsComponent,
-    PrintModalComponent
+    PrintModalComponent,
+    PrintTableComponent
   ],
   imports: [
     BrowserModule,

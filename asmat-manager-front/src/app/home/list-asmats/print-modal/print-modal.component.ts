@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-print-modal',
@@ -12,6 +12,7 @@ export class PrintModalComponent implements OnInit {
   public printForm: FormGroup;
 
   constructor(private fb: FormBuilder,
+              private ref: MatDialogRef<PrintModalComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any) {
   }
 
@@ -22,4 +23,7 @@ export class PrintModalComponent implements OnInit {
     });
   }
 
+  public onSubmit() {
+    this.ref.close(this.printForm.value);
+  }
 }

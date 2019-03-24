@@ -14,6 +14,10 @@ export class AsmatService {
     return this.http.get<Asmat[]>(`${AppConfig.API_URL}/asmats`);
   }
 
+  public getAllByCity(city: string): Observable<Asmat[]> {
+    return this.http.get<Asmat[]>(`${AppConfig.API_URL}/asmats?city=${city}`);
+  }
+
   public getById(id: number): Observable<Asmat> {
     return this.http.get<Asmat>(`${AppConfig.API_URL}/asmats/${id}`);
   }

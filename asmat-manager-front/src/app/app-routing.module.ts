@@ -7,6 +7,7 @@ import {UpdateAsmatComponent} from './home/update-asmat/update-asmat.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './service/guard/auth.guard';
 import {AsmatDetailsComponent} from './home/asmat-details/asmat-details.component';
+import {PrintTableComponent} from './home/print-table/print-table.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         path: 'update/:id',
         component: UpdateAsmatComponent
+      },
+      {
+        path: 'print',
+        component: PrintTableComponent
       },
       {
         path: '**',

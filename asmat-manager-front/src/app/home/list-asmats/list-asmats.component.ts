@@ -5,10 +5,11 @@ import {AsmatFilter} from './asmat-filter';
 import {AsmatFilterPipe} from './asmat-filter.pipe';
 import {MatDialog} from '@angular/material';
 import {DeleteConfirmModalComponent} from '../delete-confirm-modal/delete-confirm-modal.component';
-import {flatMap, tap} from 'rxjs/operators';
+import {flatMap, map, tap} from 'rxjs/operators';
 import {NEVER} from 'rxjs';
 import {DeleteConfirmModalData} from '../delete-confirm-modal/delete-confirm-modal-data';
 import {PrintModalComponent} from './print-modal/print-modal.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-asmats',
@@ -25,7 +26,8 @@ export class ListAsmatsComponent implements OnInit {
   private asmatFilterPipe: AsmatFilterPipe;
 
   constructor(private asmatService: AsmatService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private router: Router) {
     this.asmats = [];
     this.searchInput = '';
     this.adherentOnly = false;
@@ -70,10 +72,14 @@ export class ListAsmatsComponent implements OnInit {
         data: {
           cities
         }
-      }).afterClosed())
-    ).subscribe(result => {
-
-    });
+      }).afterClosed()),
+      map(result => result ? result : NEVER)
+    ).subscribe(({city, includeDates}) => this.router.navigate(['/', 'home', 'print'], {
+      queryParams: {
+        city,
+        dates: includeDates
+      }
+    }));
   }
 
   private get filter(): AsmatFilter {

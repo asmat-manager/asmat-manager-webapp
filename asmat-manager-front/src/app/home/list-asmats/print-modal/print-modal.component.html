@@ -1,7 +1,7 @@
 <div class="mat-typography">
   <h2 mat-dialog-title>Imprimer une liste d'assistantes maternelles</h2>
 
-  <form novalidate [formGroup]="printForm">
+  <form novalidate [formGroup]="printForm" (ngSubmit)="onSubmit()">
     <div class="form-content">
       <mat-form-field>
         <mat-label>Ville</mat-label>
@@ -22,7 +22,10 @@
       <button mat-button mat-dialog-close>
         ANNULER
       </button>
-      <button mat-button color="primary" type="submit">
+      <button mat-button
+              color="primary"
+              type="submit"
+              [disabled]="printForm.invalid">
         CONTINUER
       </button>
     </mat-dialog-actions>
