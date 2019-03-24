@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Location} from '@angular/common'
+import {Location} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import {Asmat} from '../../model/asmat';
 import {AsmatService} from '../../service/asmat.service';
@@ -35,6 +35,31 @@ export class AsmatDetailsComponent implements OnInit {
     } else {
       const {postalCode, streetNo, street, city} = address;
       return `${streetNo} ${street}, ${postalCode} ${city}`;
+    }
+  }
+
+  public formatAvailability(asmat: Asmat): string {
+    if (asmat.availabilityCommunicated) {
+      const babyAvailability = asmat.babyAvailability;
+      const scholarAvailability = asmat.scholarAvailability;
+
+      if (babyAvailability === 0 && scholarAvailability === 0) {
+        return 'Aucune';
+      } else {
+        let result = '';
+        if (babyAvailability > 0) {
+          result += `${babyAvailability} bébé${babyAvailability > 1 ? 's' : ''}`;
+          if (scholarAvailability > 0) {
+            result += ' et ';
+          }
+        }
+        if (scholarAvailability > 0) {
+          result += `${scholarAvailability} périscolaire${scholarAvailability > 1 ? 's' : ''}`;
+        }
+        return result;
+      }
+    } else {
+      return 'Non communiquée';
     }
   }
 

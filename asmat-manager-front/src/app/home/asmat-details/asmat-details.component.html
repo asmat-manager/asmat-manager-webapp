@@ -4,11 +4,11 @@
     <section class="info-section">
       <h3>Général</h3>
       <div class="info-group">
-        <span>Adresse : </span>
+        <span>Adresse :</span>
         <span>{{ formatAddress(asmat.address) }}</span>
       </div>
       <div class="info-group">
-        <span>Nombre d'accueils : </span>
+        <span>Nombre d'accueils :</span>
         <span>{{ asmat.receptions }}</span>
       </div>
     </section>
@@ -16,7 +16,11 @@
     <section class="info-section">
       <h3>Informations clés :</h3>
       <div class="info-group">
-        <span>Adhérente</span>
+        <span>Disponibilité :</span>
+        <span>{{ formatAvailability(asmat) }}</span>
+      </div>
+      <div class="info-group">
+        <span>Adhérente :</span>
         <span>{{ asmat.address ? 'Oui' : 'Non' }}</span>
       </div>
       <div class="info-group">
@@ -32,7 +36,7 @@
     <section class="info-section">
       <h3>Contact</h3>
       <div class="info-group">
-        <span>Adresse e-mail : </span>
+        <span>Adresse e-mail :</span>
         <span>{{ asmat.email }}</span>
       </div>
       <div class="info-group">
