@@ -33,6 +33,7 @@ import {NoConnectionInterceptor} from './service/interceptor/no-connection.inter
 import { ServerErrorModalComponent } from './server-error-modal/server-error-modal.component';
 import {ServerErrorInterceptor} from './service/interceptor/server-error.interceptor';
 import { AsmatDetailsComponent } from './home/asmat-details/asmat-details.component';
+import { PrintModalComponent } from './home/list-asmats/print-modal/print-modal.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AsmatDetailsComponent } from './home/asmat-details/asmat-details.compon
     DeleteConfirmModalComponent,
     LoginComponent,
     ServerErrorModalComponent,
-    AsmatDetailsComponent
+    AsmatDetailsComponent,
+    PrintModalComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +90,11 @@ import { AsmatDetailsComponent } from './home/asmat-details/asmat-details.compon
       multi: true
     }
   ],
-  entryComponents: [DeleteConfirmModalComponent, ServerErrorModalComponent],
+  entryComponents: [
+    DeleteConfirmModalComponent,
+    ServerErrorModalComponent,
+    PrintModalComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

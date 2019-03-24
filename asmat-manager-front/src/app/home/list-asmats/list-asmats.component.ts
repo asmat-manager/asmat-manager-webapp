@@ -8,6 +8,7 @@ import {DeleteConfirmModalComponent} from '../delete-confirm-modal/delete-confir
 import {flatMap, tap} from 'rxjs/operators';
 import {NEVER} from 'rxjs';
 import {DeleteConfirmModalData} from '../delete-confirm-modal/delete-confirm-modal-data';
+import {PrintModalComponent} from './print-modal/print-modal.component';
 
 @Component({
   selector: 'app-list-asmats',
@@ -22,6 +23,7 @@ export class ListAsmatsComponent implements OnInit {
 
   private asmats: Asmat[];
   private asmatFilterPipe: AsmatFilterPipe;
+
   constructor(private asmatService: AsmatService,
               private dialog: MatDialog) {
     this.asmats = [];
@@ -56,6 +58,22 @@ export class ListAsmatsComponent implements OnInit {
         flatMap(shouldDelete => shouldDelete ? this.asmatService.deleteById(asmat.id) : NEVER)
       )
       .subscribe(() => this.asmats.splice(this.asmats.indexOf(asmat), 1));
+  }
+
+  public onPrintClicked() {
+    this.asmatService.getCities().pipe(
+      flatMap(cities => this.dialog.open(PrintModalComponent, {
+        hasBackdrop: true,
+        position: {
+          top: '30vh'
+        },
+        data: {
+          cities
+        }
+      }).afterClosed())
+    ).subscribe(result => {
+
+    });
   }
 
   private get filter(): AsmatFilter {

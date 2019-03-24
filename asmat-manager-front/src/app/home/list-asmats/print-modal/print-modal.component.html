@@ -1,0 +1,30 @@
+<div class="mat-typography">
+  <h2 mat-dialog-title>Imprimer une liste d'assistantes maternelles</h2>
+
+  <form novalidate [formGroup]="printForm">
+    <div class="form-content">
+      <mat-form-field>
+        <mat-label>Ville</mat-label>
+        <mat-select formControlName="city" placeholder="Sélectionnez une ville">
+          <mat-option *ngFor="let city of data.cities" [value]="city">
+            {{ city }}
+          </mat-option>
+        </mat-select>
+        <mat-error>Veuillez sélectionner une ville</mat-error>
+      </mat-form-field>
+
+      <mat-slide-toggle formControlName="includeDates" color="primary">
+        Include les dates d'adhésion et de rappel
+      </mat-slide-toggle>
+    </div>
+
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>
+        ANNULER
+      </button>
+      <button mat-button color="primary" type="submit">
+        CONTINUER
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

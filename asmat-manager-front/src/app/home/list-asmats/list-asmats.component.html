@@ -13,9 +13,19 @@
 
       <mat-slide-toggle [(ngModel)]="adherentOnly"
                         labelPosition="before"
-                        class="adherent-toggle">
+                        color="primary"
+                        class="btn-margin-x">
         Adhérentes seulement
       </mat-slide-toggle>
+
+      <div class="btn-margin-x">
+        <button mat-raised-button
+                type="button"
+                color="primary"
+                (click)="onPrintClicked()">
+          Imprimer
+        </button>
+      </div>
 
       <div class="add-btn-wrapper">
         <a mat-raised-button

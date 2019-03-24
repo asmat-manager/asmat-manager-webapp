@@ -18,6 +18,10 @@ export class AsmatService {
     return this.http.get<Asmat>(`${AppConfig.API_URL}/asmats/${id}`);
   }
 
+  public getCities(): Observable<string[]> {
+    return this.http.get<string[]>(`${AppConfig.API_URL}/asmats/cities`);
+  }
+
   public create(asmat: Asmat): Observable<Asmat> {
     return this.http.post<Asmat>(`${AppConfig.API_URL}/asmats`, asmat);
   }
