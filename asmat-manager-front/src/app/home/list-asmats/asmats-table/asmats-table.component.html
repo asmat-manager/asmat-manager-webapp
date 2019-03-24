@@ -1,70 +1,72 @@
-<table mat-table class="mat-elevation-z2 table" [dataSource]="asmats">
-  <ng-container matColumnDef="firstName">
-    <th mat-header-cell *matHeaderCellDef>Prénom</th>
-    <td mat-cell
-        (mouseenter)="onMouseEntered(asmat)"
-        (mouseleave)="onMouseLeave()"
-        [class.hovered]="hoveredAsmatId === asmat.id"
-        *matCellDef="let asmat">{{ asmat.firstName }}</td>
-  </ng-container>
+<div class="table-wrapper mat-elevation-z2">
+  <table mat-table class="table" [dataSource]="asmats">
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>Prénom</th>
+      <td mat-cell
+          (mouseenter)="onMouseEntered(asmat)"
+          (mouseleave)="onMouseLeave()"
+          [class.hovered]="hoveredAsmatId === asmat.id"
+          *matCellDef="let asmat">{{ asmat.firstName }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="lastName">
-    <th mat-header-cell *matHeaderCellDef>Nom</th>
-    <td mat-cell
-        (mouseenter)="onMouseEntered(asmat)"
-        (mouseleave)="onMouseLeave()"
-        [class.hovered]="hoveredAsmatId === asmat.id"
-        *matCellDef="let asmat">{{ asmat.lastName }}</td>
-  </ng-container>
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Nom</th>
+      <td mat-cell
+          (mouseenter)="onMouseEntered(asmat)"
+          (mouseleave)="onMouseLeave()"
+          [class.hovered]="hoveredAsmatId === asmat.id"
+          *matCellDef="let asmat">{{ asmat.lastName }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="address">
-    <th mat-header-cell *matHeaderCellDef>Adresse</th>
-    <td mat-cell
-        (mouseenter)="onMouseEntered(asmat)"
-        (mouseleave)="onMouseLeave()"
-        [class.hovered]="hoveredAsmatId === asmat.id"
-        *matCellDef="let asmat">
-      {{ formatAddress(asmat.address) }}
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Adresse</th>
+      <td mat-cell
+          (mouseenter)="onMouseEntered(asmat)"
+          (mouseleave)="onMouseLeave()"
+          [class.hovered]="hoveredAsmatId === asmat.id"
+          *matCellDef="let asmat">
+        {{ formatAddress(asmat.address) }}
+      </td>
+    </ng-container>
 
-  <ng-container matColumnDef="adherent">
-    <th mat-header-cell *matHeaderCellDef>Adhérente</th>
-    <td mat-cell
-        (mouseenter)="onMouseEntered(asmat)"
-        (mouseleave)="onMouseLeave()"
-        [class.hovered]="hoveredAsmatId === asmat.id"
-        *matCellDef="let asmat">
-      <mat-icon *ngIf="asmat.adherent">
-        check
-      </mat-icon>
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="adherent">
+      <th mat-header-cell *matHeaderCellDef>Adhérente</th>
+      <td mat-cell
+          (mouseenter)="onMouseEntered(asmat)"
+          (mouseleave)="onMouseLeave()"
+          [class.hovered]="hoveredAsmatId === asmat.id"
+          *matCellDef="let asmat">
+        <mat-icon *ngIf="asmat.adherent">
+          check
+        </mat-icon>
+      </td>
+    </ng-container>
 
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Actions</th>
-    <td mat-cell
-        [class.hovered]="hoveredAsmatId === asmat.id"
-        *matCellDef="let asmat">
-      <a mat-icon-button
-         color="primary"
-         class="action-btn"
-         [routerLink]="['/', 'home', 'update', asmat.id]">
-        <mat-icon>edit</mat-icon>
-      </a>
-      <button mat-icon-button
-              color="warn"
-              type="button"
-              class="action-btn"
-              (click)="onDeleteClicked(asmat)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell
+          [class.hovered]="hoveredAsmatId === asmat.id"
+          *matCellDef="let asmat">
+        <a mat-icon-button
+           color="primary"
+           class="action-btn"
+           [routerLink]="['/', 'home', 'update', asmat.id]">
+          <mat-icon>edit</mat-icon>
+        </a>
+        <button mat-icon-button
+                color="warn"
+                type="button"
+                class="action-btn"
+                (click)="onDeleteClicked(asmat)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-  <tr mat-row
-      (click)="onRowClicked(row)"
-      *matRowDef="let row; columns: displayColumns">
-  </tr>
-</table>
+    <tr mat-header-row *matHeaderRowDef="displayColumns; sticky: true"></tr>
+    <tr mat-row
+        (click)="onRowClicked(row)"
+        *matRowDef="let row; columns: displayColumns">
+    </tr>
+  </table>
+</div>
