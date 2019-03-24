@@ -16,36 +16,6 @@
     </td>
   </ng-container>
 
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef>E-mail</th>
-    <td mat-cell *matCellDef="let asmat">{{ asmat.email }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="cellPhone">
-    <th mat-header-cell *matHeaderCellDef>N° de téléphone portable</th>
-    <td mat-cell *matCellDef="let asmat">{{ asmat.cellPhoneNumber }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="fixPhone">
-    <th mat-header-cell *matHeaderCellDef>N° de téléphone fixe</th>
-    <td mat-cell *matCellDef="let asmat">{{ asmat.fixPhoneNumber }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="joiningDate">
-    <th mat-header-cell *matHeaderCellDef>Date d'adhésion</th>
-    <td mat-cell *matCellDef="let asmat">{{ asmat.joiningDate | date:'mediumDate' }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="remindDate">
-    <th mat-header-cell *matHeaderCellDef>Date de rappel</th>
-    <td mat-cell *matCellDef="let asmat">{{ asmat.remindDate | date:'mediumDate' }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="receptions">
-    <th mat-header-cell *matHeaderCellDef>Nombre d'accueils</th>
-    <td mat-cell *matCellDef="let asmat">{{ asmat.receptions }}</td>
-  </ng-container>
-
   <ng-container matColumnDef="adherent">
     <th mat-header-cell *matHeaderCellDef>Adhérente</th>
     <td mat-cell *matCellDef="let asmat">

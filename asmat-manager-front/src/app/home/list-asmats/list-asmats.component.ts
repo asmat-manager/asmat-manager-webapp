@@ -18,7 +18,6 @@ export class ListAsmatsComponent implements OnInit {
 
   public searchInput: string;
   public adherentOnly: boolean;
-  public displayAll: boolean;
   public asmatsLoaded: boolean;
 
   private asmats: Asmat[];
@@ -28,7 +27,6 @@ export class ListAsmatsComponent implements OnInit {
     this.asmats = [];
     this.searchInput = '';
     this.adherentOnly = false;
-    this.displayAll = false;
     this.asmatsLoaded = false;
     this.asmatFilterPipe = new AsmatFilterPipe();
   }

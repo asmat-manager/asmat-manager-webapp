@@ -16,13 +16,9 @@ export class AsmatsTableComponent {
   @Output()
   public deleteClicked: EventEmitter<Asmat>;
 
-  @Input()
-  public displayAll: boolean;
-
   constructor() {
     this.asmats = [];
     this.deleteClicked = new EventEmitter<Asmat>();
-    this.displayAll = false;
   }
 
   public formatAddress(address: Address): string {
@@ -42,21 +38,9 @@ export class AsmatsTableComponent {
     return [
       'lastName',
       'firstName',
-      ...this.additionalColumns,
-      'joiningDate',
-      'remindDate',
-      'receptions',
+      'address',
       'adherent',
       'actions'
     ];
-  }
-
-  private get additionalColumns(): string[] {
-    return this.displayAll ? [
-      'address',
-      'email',
-      'fixPhone',
-      'cellPhone'
-    ] : [];
   }
 }
