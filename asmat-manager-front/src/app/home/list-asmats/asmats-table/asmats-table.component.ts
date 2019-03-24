@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Asmat} from '../../../model/asmat';
 import {Address} from '../../../model/address';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-asmats-table',
@@ -16,7 +17,7 @@ export class AsmatsTableComponent {
   @Output()
   public deleteClicked: EventEmitter<Asmat>;
 
-  constructor() {
+  constructor(private router: Router) {
     this.asmats = [];
     this.deleteClicked = new EventEmitter<Asmat>();
   }
@@ -42,5 +43,9 @@ export class AsmatsTableComponent {
       'adherent',
       'actions'
     ];
+  }
+
+  public onRowClicked(asmat: Asmat) {
+    this.router.navigate(['home', 'asmats', asmat.id]);
   }
 }

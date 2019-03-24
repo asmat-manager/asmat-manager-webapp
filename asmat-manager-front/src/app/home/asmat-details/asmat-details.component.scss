@@ -1,0 +1,31 @@
+.container {
+  position: relative;
+  top: 5vh;
+
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+
+  .title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  section.info-section {
+    margin: 44px 0;
+
+    h3 {
+      margin-left: 24px;
+      margin-bottom: 18px;
+    }
+
+    .info-group {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+
+      margin: 14px 0;
+    }
+  }
+}

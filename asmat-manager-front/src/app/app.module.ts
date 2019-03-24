@@ -32,6 +32,7 @@ import {ToastService} from './service/toast.service';
 import {NoConnectionInterceptor} from './service/interceptor/no-connection.interceptor';
 import { ServerErrorModalComponent } from './server-error-modal/server-error-modal.component';
 import {ServerErrorInterceptor} from './service/interceptor/server-error.interceptor';
+import { AsmatDetailsComponent } from './home/asmat-details/asmat-details.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {ServerErrorInterceptor} from './service/interceptor/server-error.interce
     UpdateAsmatComponent,
     DeleteConfirmModalComponent,
     LoginComponent,
-    ServerErrorModalComponent
+    ServerErrorModalComponent,
+    AsmatDetailsComponent
   ],
   imports: [
     BrowserModule,

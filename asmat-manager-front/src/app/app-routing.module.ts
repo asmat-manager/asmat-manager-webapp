@@ -6,6 +6,7 @@ import {AddAsmatComponent} from './home/add-asmat/add-asmat.component';
 import {UpdateAsmatComponent} from './home/update-asmat/update-asmat.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './service/guard/auth.guard';
+import {AsmatDetailsComponent} from './home/asmat-details/asmat-details.component';
 
 const routes: Routes = [
   {
@@ -18,8 +19,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: '',
+        path: 'asmats',
         component: ListAsmatsComponent
+      },
+      {
+        path: 'asmats/:id',
+        component: AsmatDetailsComponent
       },
       {
         path: 'add',
@@ -31,7 +36,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: ''
+        redirectTo: 'asmats'
       }
     ]
   },
