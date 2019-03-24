@@ -33,6 +33,11 @@ public class AsmatController {
         return ResponseEntity.of(asmatService.getById(id));
     }
 
+    @GetMapping(path = "/cities")
+    public ResponseEntity<List<String>> getCities() {
+        return ResponseEntity.ok(asmatService.getCitiesFromAsmats());
+    }
+
     @PostMapping
     public ResponseEntity<AsmatDto> create(@RequestBody @Valid final AsmatDto asmatDto) throws AsmatAlreadyExistsException {
         final AsmatDto createdAsmatDto = asmatService.create(asmatDto);

@@ -34,6 +34,10 @@ public class AsmatService {
                 .map(this::mapAsmatToAsmatDto);
     }
 
+    List<String> getCitiesFromAsmats() {
+        return asmatRepository.findAllDistinctCities();
+    }
+
     AsmatDto create(final AsmatDto asmatDto) throws AsmatAlreadyExistsException {
         if (asmatRepository.existsByFirstNameAndLastName(asmatDto.getFirstName(), asmatDto.getLastName())) {
             throw new AsmatAlreadyExistsException(asmatDto);
