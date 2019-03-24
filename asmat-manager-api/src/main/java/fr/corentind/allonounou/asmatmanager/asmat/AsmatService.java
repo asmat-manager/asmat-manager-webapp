@@ -48,11 +48,18 @@ public class AsmatService {
             throw new IllegalArgumentException();
         }
 
-        if (asmatRepository.existsByFirstNameAndLastName(asmatDto.getFirstName(), asmatDto.getLastName())) {
+        final Optional<Asmat> existingAsmat = asmatRepository.findById(id);
+        if (!existingAsmat.isPresent()) {
+            return Optional.empty();
+        }
+        final Asmat unwrapedAsmat = existingAsmat.get();
+        if (!(unwrapedAsmat.getFirstName().equals(asmatDto.getFirstName()) &&
+                unwrapedAsmat.getLastName().equals(asmatDto.getLastName())) &&
+                asmatRepository.existsByFirstNameAndLastName(asmatDto.getFirstName(), asmatDto.getLastName())) {
             throw new AsmatAlreadyExistsException(asmatDto);
         }
 
-        return asmatRepository.findById(id)
+        return existingAsmat
                 .map(asmat -> asmatRepository.save(mapAsmatDtoToAsmat(asmatDto)))
                 .map(this::mapAsmatToAsmatDto);
     }

@@ -21,11 +21,11 @@
       </div>
       <div class="info-group">
         <span>Date d'adhésion :</span>
-        <span>{{ asmat.joiningDate }}</span>
+        <span>{{ asmat.joiningDate | date:'longDate' }}</span>
       </div>
       <div class="info-group">
         <span>Date de rappel :</span>
-        <span>{{ asmat.remindDate }}</span>
+        <span>{{ asmat.remindDate | date:'longDate' }}</span>
       </div>
     </section>
 
@@ -44,5 +44,21 @@
         <span>{{ asmat.cellPhoneNumber }}</span>
       </div>
     </section>
+  </div>
+  <div class="action-buttons">
+    <div>
+      <button mat-raised-button
+              color="primary"
+              (click)="onBackClicked()">
+        Retour
+      </button>
+    </div>
+    <div>
+      <a mat-raised-button
+         color="accent"
+         [routerLink]="['/', 'home', 'update', asmat.id]">
+        Modifier
+      </a>
+    </div>
   </div>
 </div>

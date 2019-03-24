@@ -17,9 +17,12 @@ export class AsmatsTableComponent {
   @Output()
   public deleteClicked: EventEmitter<Asmat>;
 
+  public hoveredAsmatId: number;
+
   constructor(private router: Router) {
     this.asmats = [];
     this.deleteClicked = new EventEmitter<Asmat>();
+    this.hoveredAsmatId = -1;
   }
 
   public formatAddress(address: Address): string {
@@ -35,6 +38,21 @@ export class AsmatsTableComponent {
     this.deleteClicked.emit(asmat);
   }
 
+  public onMouseEntered(asmat: Asmat) {
+    this.hoveredAsmatId = asmat.id;
+  }
+
+  public onMouseLeave() {
+    this.hoveredAsmatId = -1;
+  }
+
+  public onRowClicked(asmat: Asmat) {
+    if (this.hoveredAsmatId < 0) {
+      return;
+    }
+    this.router.navigate(['home', 'asmats', asmat.id]);
+  }
+
   get displayColumns(): string[] {
     return [
       'lastName',
@@ -43,9 +61,5 @@ export class AsmatsTableComponent {
       'adherent',
       'actions'
     ];
-  }
-
-  public onRowClicked(asmat: Asmat) {
-    this.router.navigate(['home', 'asmats', asmat.id]);
   }
 }

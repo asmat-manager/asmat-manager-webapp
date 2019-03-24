@@ -1,3 +1,20 @@
 .table {
   width: 100%;
 }
+
+td[mat-cell] {
+  transition: background-color ease-in-out 120ms;
+
+  &.hovered {
+    background-color: rgb(235, 235, 235);
+    cursor: pointer;
+  }
+}
+
+.action-btn {
+  transition: all linear 150ms;
+
+  &:hover {
+    background-color: rgb(235, 235, 235);
+  }
+}

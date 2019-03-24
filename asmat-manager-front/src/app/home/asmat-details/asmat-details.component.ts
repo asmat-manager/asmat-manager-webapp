@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Location} from '@angular/common'
 import {ActivatedRoute} from '@angular/router';
 import {Asmat} from '../../model/asmat';
 import {AsmatService} from '../../service/asmat.service';
@@ -16,7 +17,8 @@ export class AsmatDetailsComponent implements OnInit {
   public asmat: Asmat;
 
   constructor(private route: ActivatedRoute,
-              private asmatService: AsmatService) {
+              private asmatService: AsmatService,
+              private location: Location) {
     this.asmatLoaded = false;
   }
 
@@ -34,5 +36,9 @@ export class AsmatDetailsComponent implements OnInit {
       const {postalCode, streetNo, street, city} = address;
       return `${streetNo} ${street}, ${postalCode} ${city}`;
     }
+  }
+
+  public onBackClicked() {
+    this.location.back();
   }
 }
