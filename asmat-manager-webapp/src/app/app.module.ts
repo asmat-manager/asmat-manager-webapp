@@ -9,8 +9,6 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ElectronService} from './electron/electron.service';
-import {WebviewDirective} from './electron/webview.directive';
 import {HomeComponent} from './home/home.component';
 import {NavbarComponent} from './home/navbar/navbar.component';
 import {MaterialModule} from './material/material.module';
@@ -39,7 +37,6 @@ import { PrintTableComponent } from './home/print-table/print-table.component';
 @NgModule({
   declarations: [
     AppComponent,
-    WebviewDirective,
     HomeComponent,
     NavbarComponent,
     ListAsmatsComponent,
@@ -65,7 +62,6 @@ import { PrintTableComponent } from './home/print-table/print-table.component';
     ReactiveFormsModule
   ],
   providers: [
-    ElectronService,
     AsmatService,
     AuthService,
     ToastService,

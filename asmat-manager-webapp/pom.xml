@@ -8,8 +8,8 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>asmat-manager-front</artifactId>
-  <name>asmat-manager-front</name>
+  <artifactId>asmat-manager-webapp</artifactId>
+  <name>asmat-manager-webapp</name>
   <description>Client Electron de l'application AsMat Manager</description>
 
   <build>
