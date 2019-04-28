@@ -83,7 +83,6 @@ export class PrintTableComponent implements OnInit {
       'address',
       'receptions',
       'phones',
-      'mail',
       'availability',
       'adherent'
     ];
