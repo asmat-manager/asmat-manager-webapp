@@ -6,7 +6,7 @@
       <mat-form-field>
         <mat-label>Ville</mat-label>
         <mat-select formControlName="city" placeholder="Sélectionnez une ville">
-          <mat-option *ngFor="let city of data.cities" [value]="city">
+          <mat-option *ngFor="let city of data.cities | sort" [value]="city">
             {{ city }}
           </mat-option>
         </mat-select>

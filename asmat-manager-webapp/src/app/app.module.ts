@@ -28,11 +28,12 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './service/guard/auth.guard';
 import {ToastService} from './service/toast.service';
 import {NoConnectionInterceptor} from './service/interceptor/no-connection.interceptor';
-import { ServerErrorModalComponent } from './server-error-modal/server-error-modal.component';
+import {ServerErrorModalComponent} from './server-error-modal/server-error-modal.component';
 import {ServerErrorInterceptor} from './service/interceptor/server-error.interceptor';
-import { AsmatDetailsComponent } from './home/asmat-details/asmat-details.component';
-import { PrintModalComponent } from './home/list-asmats/print-modal/print-modal.component';
-import { PrintTableComponent } from './home/print-table/print-table.component';
+import {AsmatDetailsComponent} from './home/asmat-details/asmat-details.component';
+import {PrintModalComponent} from './home/list-asmats/print-modal/print-modal.component';
+import {PrintTableComponent} from './home/print-table/print-table.component';
+import { SortPipe } from './pipe/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { PrintTableComponent } from './home/print-table/print-table.component';
     ServerErrorModalComponent,
     AsmatDetailsComponent,
     PrintModalComponent,
-    PrintTableComponent
+    PrintTableComponent,
+    SortPipe,
   ],
   imports: [
     BrowserModule,
