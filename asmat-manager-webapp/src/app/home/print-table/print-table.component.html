@@ -18,6 +18,8 @@
     </div>
   </div>
 
+  <h3 class="title printable">{{ asmats[0].address.city | titlecase }}</h3>
+
   <table mat-table class="table mat-elevation-z2" [dataSource]="asmats">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Nom</th>

@@ -31,7 +31,7 @@
   }
 
   @media print {
-    .title, .button-bar {
+    .title:not(.printable), .button-bar {
       display: none;
     }
 
