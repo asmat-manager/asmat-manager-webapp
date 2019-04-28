@@ -6,7 +6,7 @@ import {AsmatFilterPipe} from './asmat-filter.pipe';
 import {MatDialog} from '@angular/material';
 import {DeleteConfirmModalComponent} from '../delete-confirm-modal/delete-confirm-modal.component';
 import {flatMap, map, tap} from 'rxjs/operators';
-import {NEVER} from 'rxjs';
+import {NEVER, of} from 'rxjs';
 import {DeleteConfirmModalData} from '../delete-confirm-modal/delete-confirm-modal-data';
 import {PrintModalComponent} from './print-modal/print-modal.component';
 import {Router} from '@angular/router';
@@ -73,7 +73,7 @@ export class ListAsmatsComponent implements OnInit {
           cities
         }
       }).afterClosed()),
-      map(result => result ? result : NEVER)
+      flatMap(result => result ? of(result) : NEVER)
     ).subscribe(({city, includeDates}) => this.router.navigate(['/', 'home', 'print'], {
       queryParams: {
         city,
