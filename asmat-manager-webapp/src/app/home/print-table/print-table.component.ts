@@ -3,7 +3,7 @@ import {Location} from '@angular/common';
 import {AsmatService} from '../../service/asmat.service';
 import {Asmat} from '../../model/asmat';
 import {Address} from '../../model/address';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
 
 @Component({
@@ -20,6 +20,7 @@ export class PrintTableComponent implements OnInit {
 
   constructor(private asmatService: AsmatService,
               private route: ActivatedRoute,
+              private router: Router,
               private location: Location) {
     this.asmatsLoaded = false;
     this.asmats = [];
@@ -69,7 +70,7 @@ export class PrintTableComponent implements OnInit {
 
   public onValidate() {
     window.print();
-    this.location.replaceState('/home');
+    this.router.navigate(['home']);
   }
 
   public onCancelClicked() {
