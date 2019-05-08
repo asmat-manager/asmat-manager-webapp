@@ -20,70 +20,67 @@
 
   <h3 class="title printable">{{ asmats[0].address.city | titlecase }}</h3>
 
-  <table mat-table class="table mat-elevation-z2" [dataSource]="asmats">
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Nom</th>
-      <td mat-cell *matCellDef="let asmat">
+  <mat-table class="table mat-elevation-z2" [dataSource]="asmats">
+    <ng-container cdkColumnDef="name">
+      <mat-header-cell *cdkHeaderCellDef class="flex-2">Nom</mat-header-cell>
+      <mat-cell *cdkCellDef="let asmat" class="flex-2">
         {{ asmat.firstName }} {{ asmat.lastName }}
-      </td>
+      </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef>Adresse</th>
-      <td mat-cell
-          *matCellDef="let asmat">
+    <ng-container cdkColumnDef="address">
+      <mat-header-cell *cdkHeaderCellDef class="flex-4">Adresse</mat-header-cell>
+      <mat-cell *cdkCellDef="let asmat" class="flex-4">
         {{ formatAddress(asmat.address) }}
-      </td>
+      </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="phones">
-      <th mat-header-cell *matHeaderCellDef>Téléphone</th>
-      <td mat-cell *matCellDef="let asmat">
-        <div *ngIf="asmat.fixPhoneNumber">Fixe: {{ asmat.fixPhoneNumber }}</div>
-        <div *ngIf="asmat.cellPhoneNumber">Port: {{ asmat.cellPhoneNumber }}</div>
-      </td>
+    <ng-container cdkColumnDef="phones">
+      <mat-header-cell *cdkHeaderCellDef class="flex-3">Téléphone</mat-header-cell>
+      <mat-cell *cdkCellDef="let asmat" class="flex-3 phone-cell">
+        <p *ngIf="asmat.fixPhoneNumber">Fixe: {{ asmat.fixPhoneNumber }}</p>
+        <p *ngIf="asmat.cellPhoneNumber">Port: {{ asmat.cellPhoneNumber }}</p>
+      </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="receptions">
-      <th mat-header-cell *matHeaderCellDef>Nb. d'accueils</th>
-      <td mat-cell *matCellDef="let asmat">
+    <ng-container cdkColumnDef="receptions">
+      <mat-header-cell *cdkHeaderCellDef>Nb. d'accueils</mat-header-cell>
+      <mat-cell *cdkCellDef="let asmat">
         {{ asmat.receptions }}
-      </td>
+      </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="adherent">
-      <th mat-header-cell *matHeaderCellDef>Adhérente</th>
-      <td mat-cell
-          *matCellDef="let asmat">
+    <ng-container cdkColumnDef="adherent">
+      <mat-header-cell *cdkHeaderCellDef>Adhérente</mat-header-cell>
+      <mat-cell *cdkCellDef="let asmat">
         <mat-icon *ngIf="asmat.adherent" class="icon">
           check
         </mat-icon>
-      </td>
+      </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="availability">
-      <th mat-header-cell *matHeaderCellDef>Disponibilité</th>
-      <td mat-cell *matCellDef="let asmat">
+    <ng-container cdkColumnDef="availability">
+      <mat-header-cell *cdkHeaderCellDef class="flex-2">Disponibilité</mat-header-cell>
+      <mat-cell *cdkCellDef="let asmat" class="flex-2">
         {{ formatAvailability(asmat) }}
-      </td>
+      </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="joiningDate">
-      <th mat-header-cell *matHeaderCellDef>Adhésion</th>
-      <td mat-cell *matCellDef="let asmat">
+    <ng-container cdkColumnDef="joiningDate">
+      <mat-header-cell *cdkHeaderCellDef class="flex-2">Adhésion</mat-header-cell>
+      <mat-cell *cdkCellDef="let asmat" class="flex-2">
         {{ asmat.joiningDate | date:'shortDate' }}
-      </td>
+      </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="remindDate">
-      <th mat-header-cell *matHeaderCellDef>Rappel</th>
-      <td mat-cell *matCellDef="let asmat">
+    <ng-container cdkColumnDef="remindDate">
+      <mat-header-cell *cdkHeaderCellDef class="flex-2">Rappel</mat-header-cell>
+      <mat-cell *cdkCellDef="let asmat" class="flex-2">
         {{ asmat.remindDate | date:'shortDate' }}
-      </td>
+      </mat-cell>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayColumns">
-    </tr>
-  </table>
+    <mat-header-row *cdkHeaderRowDef="displayColumns"></mat-header-row>
+    <mat-row *cdkRowDef="let row; columns: displayColumns"></mat-row>
+  </mat-table>
 </div>

@@ -7,6 +7,7 @@ import {
   MatTableModule,
   MatToolbarModule
 } from '@angular/material';
+import {CdkTableModule} from '@angular/cdk/table';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {
     MatDialogModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule,
+    CdkTableModule
   ],
   exports: [
     MatToolbarModule,
@@ -33,7 +35,8 @@ import {
     MatDialogModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule,
+    CdkTableModule
   ]
 })
 export class MaterialModule {
