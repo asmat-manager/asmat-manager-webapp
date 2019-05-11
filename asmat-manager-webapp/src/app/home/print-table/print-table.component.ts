@@ -28,8 +28,9 @@ export class PrintTableComponent implements OnInit {
 
   public ngOnInit() {
     const city = this.route.snapshot.queryParamMap.get('city');
+    const adherentOnly = this.route.snapshot.queryParamMap.get('adherentOnly') === 'true';
     this.includeDates = this.route.snapshot.queryParamMap.get('dates') === 'true';
-    this.asmatService.getAllByCity(city)
+    this.asmatService.getAll({city, adherentOnly})
       .pipe(tap(() => this.asmatsLoaded = true))
       .subscribe(asmats => this.asmats = asmats);
   }
