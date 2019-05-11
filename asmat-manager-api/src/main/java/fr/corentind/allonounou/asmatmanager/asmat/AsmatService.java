@@ -3,8 +3,11 @@ package fr.corentind.allonounou.asmatmanager.asmat;
 import fr.corentind.allonounou.asmatmanager.exception.AsmatAlreadyExistsException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.Predicate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,15 +25,8 @@ public class AsmatService {
         this.asmatRepository = asmatRepository;
     }
 
-    List<AsmatDto> getAll() {
-        return asmatRepository.findAll()
-                .stream()
-                .map(this::mapAsmatToAsmatDto)
-                .collect(Collectors.toList());
-    }
-
-    List<AsmatDto> getByCity(final String city) {
-        return asmatRepository.findAllByAddress_City(city)
+    List<AsmatDto> getAll(final String city, final boolean adherentOnly) {
+        return queryAsmats(city, adherentOnly)
                 .stream()
                 .map(this::mapAsmatToAsmatDto)
                 .collect(Collectors.toList());
@@ -81,6 +77,19 @@ public class AsmatService {
             return true;
         }
         return false;
+    }
+
+    private List<Asmat> queryAsmats(final String city, final boolean adherentOnly) {
+        return asmatRepository.findAll((Specification<Asmat>) (root, query, criteriaBuilder) -> {
+            List<Predicate> predicates = new ArrayList<>();
+            if (city != null) {
+                predicates.add(criteriaBuilder.equal(root.get("address").get("city"), city));
+            }
+            if (adherentOnly) {
+                predicates.add(criteriaBuilder.equal(root.get("adherent"), true));
+            }
+            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+        });
     }
 
     private AsmatDto mapAsmatToAsmatDto(final Asmat asmat) {

@@ -23,11 +23,9 @@ public class AsmatController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AsmatDto>> getAll(@RequestParam(value = "city", required = false) final String city) {
-        if (city != null) {
-            return ResponseEntity.ok(asmatService.getByCity(city));
-        }
-        return ResponseEntity.ok(asmatService.getAll());
+    public ResponseEntity<List<AsmatDto>> getAll(@RequestParam(value = "city", required = false) final String city,
+                                                 @RequestParam(value = "adherentOnly", defaultValue = "false") final boolean adherentOnly) {
+        return ResponseEntity.ok(asmatService.getAll(city, adherentOnly));
     }
 
     @GetMapping(path = "/{id}")
