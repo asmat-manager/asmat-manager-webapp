@@ -13,9 +13,15 @@
         <mat-error>Veuillez sélectionner une ville</mat-error>
       </mat-form-field>
 
-      <mat-slide-toggle formControlName="includeDates" color="primary">
-        Include les dates d'adhésion et de rappel
-      </mat-slide-toggle>
+      <div class="toggle-group">
+        <mat-slide-toggle formControlName="adherentOnly" color="primary">
+          Imprimer les adhérentes uniquement
+        </mat-slide-toggle>
+
+        <mat-slide-toggle formControlName="includeDates" color="primary">
+          Include les dates d'adhésion et de rappel
+        </mat-slide-toggle>
+      </div>
     </div>
 
     <mat-dialog-actions align="end">

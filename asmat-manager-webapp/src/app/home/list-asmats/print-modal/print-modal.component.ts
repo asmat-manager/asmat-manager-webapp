@@ -19,6 +19,7 @@ export class PrintModalComponent implements OnInit {
   public ngOnInit() {
     this.printForm = this.fb.group({
       city: [null, Validators.required],
+      adherentOnly: false,
       includeDates: false
     });
   }
