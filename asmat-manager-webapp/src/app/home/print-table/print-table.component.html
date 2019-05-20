@@ -43,6 +43,13 @@
       </mat-cell>
     </ng-container>
 
+    <ng-container cdkColumnDef="email">
+      <mat-header-cell *cdkHeaderCellDef class="flex-3">Adresse e-mail</mat-header-cell>
+      <mat-cell *cdkCellDef="let asmat" class="flex-3">
+        {{ asmat.email }}
+      </mat-cell>
+    </ng-container>
+
     <ng-container cdkColumnDef="receptions">
       <mat-header-cell *cdkHeaderCellDef>Nb. d'accueils</mat-header-cell>
       <mat-cell *cdkCellDef="let asmat">

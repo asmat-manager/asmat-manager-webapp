@@ -16,12 +16,12 @@ export class AsmatsTableComponent {
   @Output()
   public deleteClicked: EventEmitter<Asmat>;
 
-  public hoveredAsmatId: number;
+  public hoveredAsmatId: string;
 
   constructor(private router: Router) {
     this.asmats = [];
     this.deleteClicked = new EventEmitter<Asmat>();
-    this.hoveredAsmatId = -1;
+    this.hoveredAsmatId = '';
   }
 
   public formatAddress(address: Address): string {
@@ -38,18 +38,17 @@ export class AsmatsTableComponent {
   }
 
   public onMouseEntered(asmat: Asmat) {
-    this.hoveredAsmatId = asmat.id;
+    this.hoveredAsmatId = asmat._id;
   }
 
   public onMouseLeave() {
-    this.hoveredAsmatId = -1;
+    this.hoveredAsmatId = '';
   }
 
   public onRowClicked(asmat: Asmat) {
-    if (this.hoveredAsmatId < 0) {
-      return;
+    if (this.hoveredAsmatId !== '') {
+      this.router.navigate(['home', 'asmats', asmat._id]);
     }
-    this.router.navigate(['home', 'asmats', asmat.id]);
   }
 
   get displayColumns(): string[] {

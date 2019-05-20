@@ -23,7 +23,7 @@ export class AsmatService {
     return this.http.get<Asmat[]>(`${AppConfig.API_URL}/asmats?city=${city}`);
   }
 
-  public getById(id: number): Observable<Asmat> {
+  public getById(id: string): Observable<Asmat> {
     return this.http.get<Asmat>(`${AppConfig.API_URL}/asmats/${id}`);
   }
 
@@ -36,10 +36,10 @@ export class AsmatService {
   }
 
   public update(asmat: Asmat): Observable<Asmat> {
-    return this.http.put<Asmat>(`${AppConfig.API_URL}/asmats/${asmat.id}`, asmat);
+    return this.http.put<Asmat>(`${AppConfig.API_URL}/asmats/${asmat._id}`, asmat);
   }
 
-  public deleteById(id: number): Observable<void> {
+  public deleteById(id: string): Observable<void> {
     return this.http.delete<void>(`${AppConfig.API_URL}/asmats/${id}`);
   }
 }

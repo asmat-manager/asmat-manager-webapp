@@ -24,7 +24,7 @@ export class UpdateAsmatComponent implements OnInit {
   }
 
   public ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.asmatService.getById(id)
       .subscribe(asmat => this.asmat = asmat);
   }

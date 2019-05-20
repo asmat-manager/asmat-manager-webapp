@@ -41,10 +41,6 @@ export class ListAsmatsComponent implements OnInit {
       .subscribe(asmats => this.asmats = asmats);
   }
 
-  public get filteredAsmats(): Asmat[] {
-    return this.asmatFilterPipe.transform(this.asmats, this.filter);
-  }
-
   public onDeleteClicked(asmat: Asmat) {
     this.dialog.open(DeleteConfirmModalComponent, {
       hasBackdrop: true,
@@ -57,7 +53,7 @@ export class ListAsmatsComponent implements OnInit {
     })
       .afterClosed()
       .pipe(
-        flatMap(shouldDelete => shouldDelete ? this.asmatService.deleteById(asmat.id) : NEVER)
+        flatMap(shouldDelete => shouldDelete ? this.asmatService.deleteById(asmat._id) : NEVER)
       )
       .subscribe(() => this.asmats.splice(this.asmats.indexOf(asmat), 1));
   }
@@ -74,13 +70,13 @@ export class ListAsmatsComponent implements OnInit {
         }
       }).afterClosed()),
       flatMap(result => result ? of(result) : NEVER)
-    ).subscribe(({city, includeDates, adherentOnly}) => this.router.navigate(['/', 'home', 'print'], {
-      queryParams: {
-        city,
-        adherentOnly,
-        dates: includeDates
-      }
-    }));
+    ).subscribe((queryParams) =>
+      this.router.navigate(['/', 'home', 'print'], {queryParams})
+    );
+  }
+
+  public get filteredAsmats(): Asmat[] {
+    return this.asmatFilterPipe.transform(this.asmats, this.filter);
   }
 
   private get filter(): AsmatFilter {

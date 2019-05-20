@@ -4,7 +4,6 @@ import {Location} from '@angular/common';
 import {CustomValidators} from '../../validators/validators';
 import {Asmat} from '../../model/asmat';
 import {Address} from '../../model/address';
-import {MatSlideToggleChange} from '@angular/material';
 
 @Component({
   selector: 'app-asmat-form',
@@ -55,7 +54,7 @@ export class AsmatFormComponent implements OnInit {
 
   public onSubmit() {
     const asmat = this.asmatForm.value as Asmat;
-    asmat.id = this.initialAsmat.id;
+    asmat._id = this.initialAsmat._id;
     this.asmatSubmitted.emit(asmat);
   }
 

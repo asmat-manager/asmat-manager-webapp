@@ -1,7 +1,7 @@
 import {Address} from './address';
 
 export interface Asmat {
-  id: number;
+  _id: string;
   firstName: string;
   lastName: string;
   cellPhoneNumber: string;

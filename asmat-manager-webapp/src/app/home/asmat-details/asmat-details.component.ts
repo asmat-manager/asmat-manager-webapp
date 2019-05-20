@@ -23,7 +23,7 @@ export class AsmatDetailsComponent implements OnInit {
   }
 
   public ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.asmatService.getById(id)
       .pipe(tap(() => this.asmatLoaded = true))
       .subscribe(asmat => this.asmat = asmat);

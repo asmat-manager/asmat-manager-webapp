@@ -17,6 +17,7 @@ export class PrintTableComponent implements OnInit {
   public asmatsLoaded: boolean;
 
   private includeDates: boolean;
+  private includeEmails: boolean;
 
   constructor(private asmatService: AsmatService,
               private route: ActivatedRoute,
@@ -29,7 +30,8 @@ export class PrintTableComponent implements OnInit {
   public ngOnInit() {
     const city = this.route.snapshot.queryParamMap.get('city');
     const adherentOnly = this.route.snapshot.queryParamMap.get('adherentOnly') === 'true';
-    this.includeDates = this.route.snapshot.queryParamMap.get('dates') === 'true';
+    this.includeDates = this.route.snapshot.queryParamMap.get('includeDates') === 'true';
+    this.includeEmails = this.route.snapshot.queryParamMap.get('includeEmails') === 'true';
     this.asmatService.getAll({city, adherentOnly})
       .pipe(tap(() => this.asmatsLoaded = true))
       .subscribe(asmats => this.asmats = asmats);
@@ -79,18 +81,27 @@ export class PrintTableComponent implements OnInit {
   }
 
   public get displayColumns(): string[] {
-    const base = [
+    let columns = [
       'name',
       'address',
       'receptions',
       'phones',
+    ];
+
+    if (this.includeEmails) {
+      columns = [...columns, 'email'];
+    }
+
+    columns = [
+      ...columns,
       'availability',
       'adherent'
     ];
 
     if (this.includeDates) {
-      return [...base, 'joiningDate', 'remindDate'];
+      columns = [...columns, 'joiningDate', 'remindDate'];
     }
-    return base;
+
+    return columns;
   }
 }

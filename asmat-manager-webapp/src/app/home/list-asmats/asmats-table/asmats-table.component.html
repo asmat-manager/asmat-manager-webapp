@@ -5,7 +5,7 @@
       <td mat-cell
           (mouseenter)="onMouseEntered(asmat)"
           (mouseleave)="onMouseLeave()"
-          [class.hovered]="hoveredAsmatId === asmat.id"
+          [class.hovered]="hoveredAsmatId === asmat._id"
           *matCellDef="let asmat">{{ asmat.firstName }}</td>
     </ng-container>
 
@@ -14,7 +14,7 @@
       <td mat-cell
           (mouseenter)="onMouseEntered(asmat)"
           (mouseleave)="onMouseLeave()"
-          [class.hovered]="hoveredAsmatId === asmat.id"
+          [class.hovered]="hoveredAsmatId === asmat._id"
           *matCellDef="let asmat">{{ asmat.lastName }}</td>
     </ng-container>
 
@@ -23,7 +23,7 @@
       <td mat-cell
           (mouseenter)="onMouseEntered(asmat)"
           (mouseleave)="onMouseLeave()"
-          [class.hovered]="hoveredAsmatId === asmat.id"
+          [class.hovered]="hoveredAsmatId === asmat._id"
           *matCellDef="let asmat">
         {{ formatAddress(asmat.address) }}
       </td>
@@ -34,7 +34,7 @@
       <td mat-cell
           (mouseenter)="onMouseEntered(asmat)"
           (mouseleave)="onMouseLeave()"
-          [class.hovered]="hoveredAsmatId === asmat.id"
+          [class.hovered]="hoveredAsmatId === asmat._id"
           *matCellDef="let asmat">
         <mat-icon *ngIf="asmat.adherent">
           check
@@ -45,12 +45,12 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell
-          [class.hovered]="hoveredAsmatId === asmat.id"
+          [class.hovered]="hoveredAsmatId === asmat._id"
           *matCellDef="let asmat">
         <a mat-icon-button
            color="primary"
            class="action-btn"
-           [routerLink]="['/', 'home', 'update', asmat.id]">
+           [routerLink]="['/', 'home', 'update', asmat._id]">
           <mat-icon>edit</mat-icon>
         </a>
         <button mat-icon-button
