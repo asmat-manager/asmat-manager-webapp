@@ -1,2 +1,0 @@
-ALTER TABLE asmat
-  MODIFY COLUMN phone_number VARCHAR(20);

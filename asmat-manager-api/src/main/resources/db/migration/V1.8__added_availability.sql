@@ -1,8 +1,0 @@
-ALTER TABLE asmat
-  ADD COLUMN availability_communicated BOOLEAN NOT NULL DEFAULT FALSE;
-
-ALTER TABLE asmat
-  ADD COLUMN baby_availability TINYINT NOT NULL DEFAULT 0;
-
-ALTER TABLE asmat
-  ADD COLUMN scholar_availability TINYINT NOT NULL DEFAULT 0;
