@@ -29,8 +29,21 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="availability">
+      <th mat-header-cell *matHeaderCellDef>Dispo.</th>
+      <td mat-cell
+          (mouseenter)="onMouseEntered(asmat)"
+          (mouseleave)="onMouseLeave()"
+          [class.hovered]="hoveredAsmatId === asmat._id"
+          *matCellDef="let asmat">
+        {{ formatAvailability(asmat) }}
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="adherent">
-      <th mat-header-cell *matHeaderCellDef>Adhérente</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <span matTooltip="Adhérente">Adh.</span>
+      </th>
       <td mat-cell
           (mouseenter)="onMouseEntered(asmat)"
           (mouseleave)="onMouseLeave()"
@@ -43,7 +56,7 @@
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell
           [class.hovered]="hoveredAsmatId === asmat._id"
           *matCellDef="let asmat">
