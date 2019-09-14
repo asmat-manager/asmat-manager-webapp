@@ -43,8 +43,8 @@ export class AsmatFormComponent implements OnInit {
         postalCode: [this.initialAsmat.address.postalCode || '', Validators.pattern(/\d{5}/)],
         city: this.initialAsmat.address.city || ''
       }),
-      joiningDate: this.initialAsmat.joiningDate || null,
-      remindDate: this.initialAsmat.remindDate || null,
+      joiningDate: this.dateAsString(new Date(this.initialAsmat.joiningDate)),
+      remindDate: this.dateAsString(new Date(this.initialAsmat.remindDate)),
       receptions: this.initialAsmat.receptions || 0,
       availabilityCommunicated: this.initialAsmat.availabilityCommunicated || false,
       babyAvailability: [this.initialAsmat.babyAvailability || 0, Validators.min(0)],
@@ -64,5 +64,9 @@ export class AsmatFormComponent implements OnInit {
 
   public get availabilityCommunicated(): boolean {
     return this.asmatForm.get('availabilityCommunicated').value;
+  }
+
+  private dateAsString(date: Date | null): string | null {
+    return date ? date.toISOString().substring(0, 10) : null;
   }
 }
