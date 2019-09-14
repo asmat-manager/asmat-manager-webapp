@@ -13,17 +13,18 @@ script: npm run build
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_9312c658fa7d_key -iv $encrypted_9312c658fa7d_iv
     -in deployment/id_rsa.enc -out deployment/id_rsa -d
-  - eval "$(ssh-agent -s)"
   - chmod 600 deployment/id_rsa
-  - ssh-add deployment/id_rsa
+  - sudo sed -i '$s/}/,\n"insecure-registries":["manager.allonounouicibebe.fr:5000"]}/'
+    /etc/docker/daemon.json
+  - sudo service docker restart
 deploy:
   - provider: script
-    script: bash deployment/deploy.sh latest-dev manager
+    script: bash deployment/deploy.sh latest-dev manager-int
     skip_cleanup: true
     on:
       branch: develop
   - provider: script
-    script: bash deployment/deploy.sh latest manager-int
+    script: bash deployment/deploy.sh latest manager
     skip_cleanup: true
     on:
       branch: master
