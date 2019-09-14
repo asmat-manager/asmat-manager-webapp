@@ -5,7 +5,7 @@ import {AuthService} from '../auth.service';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {ToastService} from '../toast.service';
-import {MatDialog} from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import {ServerErrorModalComponent} from '../../server-error-modal/server-error-modal.component';
 
 @Injectable()

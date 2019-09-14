@@ -3,7 +3,7 @@ import {Asmat} from '../../model/asmat';
 import {AsmatService} from '../../service/asmat.service';
 import {AsmatFilter} from './asmat-filter';
 import {AsmatFilterPipe} from './asmat-filter.pipe';
-import {MatDialog} from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import {DeleteConfirmModalComponent} from '../delete-confirm-modal/delete-confirm-modal.component';
 import {flatMap, tap} from 'rxjs/operators';
 import {NEVER, of} from 'rxjs';
