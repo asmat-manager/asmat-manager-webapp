@@ -1,13 +1,29 @@
 language: node_js
-
 node_js:
-  - "10"
-
+  - '10'
+services:
+  - docker
+addons:
+  ssh_known_hosts: manager.allonounouicibebe.fr:2220
+env:
+  global:
+    - secure: nmTU8Mv3GGTJOdjZqnHecUTEL2cOMmIaeJmUUfaHz5Wq88dTRR5si5qkvF1i4vBcr37RVeH4Jb3bRV3wC9hiH4JFAS97E403/6y615eAsPAgf+ldNe5GkiizCjF/IZrGoJVVmyPaw0qOeQRiEyrV7X1U0ZbY8CdLNt3bHZ0qK+dBEqtgNYfVougOP6fiFKgxSxMFe1/0ki49pn9k58Yd1NADuPWit0QyDznah98eV9lL87qu0wr9LR246PAmZdw8+qmOtYvJSiZxnw+u0EzXUMSpFZtLDOCFrf7VtKFkAu9LKDEAQw31s2jihu9jrl2zXoIseQuTummWU1yVLx0bsTNKjQe3usS3ObapP+wNc1o9Cf5CrePzJTdURbpd5C0qGwS/CY3T+NMAMtVjapWYiP8LbDLSMuJoIcQ9BFR0alm02NxpkLQJdlfP9L6v+tVx9iydLJbev+zm0dA+XjFBekXPnzZOjjy50uwfNYyklRuUZr4gXZMSCTsKnCO0j3uiHV7TJ/jkEUYFR3LxtfKpelY8yOsyyoofQSBazFSqwzeZMsO30Tlr2B0DArNzH3PBP5LW1pri3dSJIRcQ2AB04UN3wjuYP8mZg9aoT5PeDPUAFY+80n/gG0/WQBJ1pju1P4tlOsCGs3+E+kAXXJ82cSaHjY2c4gRFBpHOQcmGvZ4=
+    - secure: d+F3p2YyYumTLXJQ6Gu3g72/fDYDP3qyEaluMJhD0LSCcZbQ6bK6Uf7vKfaffxDNoEvuJxyTDCilrg1VEG9D++pNqgxha9tV0F5fp0jzJSPKmbAeEfpOOnTlh9QDnIvGYBc4lD96ofCyR9oLz8RQtr59NVEDMv9YwP3mOaebzFS9pfB0O9jxZKkotP/4AwpbuSisvadxU4Blbupx/cPmkWWu2JYNwbPzn9TKX46wEMuGpaN6z3b+PYAwag+CpcuqPbVkJqDye69sVZLLNXjAPaj7CQrFppjCeE+mF25xQNRepC5fqloSj55GRQNl1QAKROdc6GWbFTXhXs8Czpm/MGj6J0TSibBfcqSWMWrUsFU2zU+Nc8d5jAk/JqHK3gmsWGgy9IOHBTIBMVXAg1/+X1ssv8HbJktRQ0wJn/PyycFzbIvUEm26yTdmdlGXZr/+gPe+QNKt3JDpYnioWldeQ5rBPz1GPQRrytAZ6mlfiB92B2fLdsUUQ5SUkWs5gHyBkxd5ABO/Z0xh1yrb0WRCKoQ1IMY9HwInjV97mjYplaReWFnKvPGQUSXvPTfruWVf05ovywGdXiSfdyqZ69u898RHDlBTJTVtSDvJEuybaReL7IBNPNEl1ZLs/vm8C/raeR9cKFiDzBOk83Kooixy75oMSzovp14o72fIjfO1D+o=
 script: npm run build
-
+before_deploy:
+  - openssl aes-256-cbc -K $encrypted_9312c658fa7d_key -iv $encrypted_9312c658fa7d_iv
+    -in deployment/id_rsa.enc -out deployment/id_rsa -d
+  - eval "$(ssh-agent -s)"
+  - chmod 600 deployment/id_rsa
+  - ssh-add deployment/id_rsa
 deploy:
   - provider: script
-    script: bash deployment/deploy.sh
+    script: bash deployment/deploy.sh latest-dev manager
     skip_cleanup: true
     on:
       branch: develop
+  - provider: script
+    script: bash deployment/deploy.sh latest manager-int
+    skip_cleanup: true
+    on:
+      branch: master
