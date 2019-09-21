@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CdkTableModule } from '@angular/cdk/table';
+import { MatMenuModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatProgressSpinnerModule,
     MatSelectModule,
     MatTooltipModule,
+    MatMenuModule,
     CdkTableModule
   ],
   exports: [
@@ -42,6 +44,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatProgressSpinnerModule,
     MatSelectModule,
     MatTooltipModule,
+    MatMenuModule,
     CdkTableModule
   ]
 })

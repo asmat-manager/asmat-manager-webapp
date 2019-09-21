@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="toolbar mat-elevation-z5">
+  <div class="logo-wrapper">
+    <img src="assets/logo.png" alt="logo"/>
+  </div>
+
+  <button mat-button [matMenuTriggerFor]="menu">
+    Asmats
+  </button>
+
+  <mat-menu #menu>
+    <a mat-menu-item routerLink="/home/asmats">
+      Lister les asmats
+    </a>
+  </mat-menu>
+</mat-toolbar>
