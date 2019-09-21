@@ -14,7 +14,7 @@ import { NavbarComponent } from './home/navbar/navbar.component';
 import { MaterialModule } from './material/material.module';
 import { AsmatService } from './service/asmat.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AsmatFilterPipe } from './home/list-asmats/asmat-filter.pipe';
+import { AsmatFilterPipe } from './new-home/list-asmats/asmat-filter.pipe';
 import { DeleteConfirmModalComponent } from './home/delete-confirm-modal/delete-confirm-modal.component';
 import { AuthService } from './service/auth.service';
 import { TokenInterceptor } from './service/interceptor/token.interceptor';
@@ -25,7 +25,7 @@ import { ToastService } from './service/toast.service';
 import { NoConnectionInterceptor } from './service/interceptor/no-connection.interceptor';
 import { ServerErrorModalComponent } from './server-error-modal/server-error-modal.component';
 import { ServerErrorInterceptor } from './service/interceptor/server-error.interceptor';
-import { PrintModalComponent } from './home/list-asmats/print-modal/print-modal.component';
+import { PrintModalComponent } from './new-home/list-asmats/print-modal/print-modal.component';
 import { SortPipe } from './pipe/sort.pipe';
 
 @NgModule({

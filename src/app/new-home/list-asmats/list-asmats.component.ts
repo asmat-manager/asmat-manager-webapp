@@ -4,10 +4,10 @@ import {AsmatService} from '../../service/asmat.service';
 import {AsmatFilter} from './asmat-filter';
 import {AsmatFilterPipe} from './asmat-filter.pipe';
 import { MatDialog } from '@angular/material/dialog';
-import {DeleteConfirmModalComponent} from '../delete-confirm-modal/delete-confirm-modal.component';
+import {DeleteConfirmModalComponent} from '../../home/delete-confirm-modal/delete-confirm-modal.component';
 import {flatMap, tap} from 'rxjs/operators';
 import {NEVER, of} from 'rxjs';
-import {DeleteConfirmModalData} from '../delete-confirm-modal/delete-confirm-modal-data';
+import {DeleteConfirmModalData} from '../../home/delete-confirm-modal/delete-confirm-modal-data';
 import {PrintModalComponent} from './print-modal/print-modal.component';
 import {Router} from '@angular/router';
 

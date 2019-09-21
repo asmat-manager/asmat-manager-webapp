@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Location} from '@angular/common';
-import {CustomValidators} from '../../validators/validators';
-import {Asmat} from '../../model/asmat';
-import {Address} from '../../model/address';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
+import { CustomValidators } from '../../validators/validators';
+import { Asmat } from '../../model/asmat';
+import { Address } from '../../model/address';
 
 @Component({
   selector: 'app-asmat-form',
@@ -25,10 +25,17 @@ export class AsmatFormComponent implements OnInit {
     this.asmatSubmitted = new EventEmitter<Asmat>();
   }
 
+  private static dateAsString(date: Date | null): string | null {
+    return date ? date.toISOString().substring(0, 10) : null;
+  }
+
   public ngOnInit() {
     this.initialAsmat = this.initialAsmat || {
       address: {} as Address
     } as Asmat;
+
+    const joiningDate = this.initialAsmat.joiningDate;
+    const remindDate = this.initialAsmat.remindDate;
 
     this.asmatForm = this.fb.group({
       firstName: [this.initialAsmat.firstName || '', Validators.required],
@@ -43,8 +50,8 @@ export class AsmatFormComponent implements OnInit {
         postalCode: [this.initialAsmat.address.postalCode || '', Validators.pattern(/\d{5}/)],
         city: this.initialAsmat.address.city || ''
       }),
-      joiningDate: this.dateAsString(new Date(this.initialAsmat.joiningDate)),
-      remindDate: this.dateAsString(new Date(this.initialAsmat.remindDate)),
+      joiningDate: joiningDate ? AsmatFormComponent.dateAsString(new Date(joiningDate)) : null,
+      remindDate: remindDate ? AsmatFormComponent.dateAsString(new Date(remindDate)) : null,
       receptions: this.initialAsmat.receptions || 0,
       availabilityCommunicated: this.initialAsmat.availabilityCommunicated || false,
       babyAvailability: [this.initialAsmat.babyAvailability || 0, Validators.min(0)],
@@ -64,9 +71,5 @@ export class AsmatFormComponent implements OnInit {
 
   public get availabilityCommunicated(): boolean {
     return this.asmatForm.get('availabilityCommunicated').value;
-  }
-
-  private dateAsString(date: Date | null): string | null {
-    return date ? date.toISOString().substring(0, 10) : null;
   }
 }
