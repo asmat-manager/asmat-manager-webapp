@@ -9,13 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './home/navbar/navbar.component';
 import { MaterialModule } from './material/material.module';
 import { AsmatService } from './service/asmat.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AsmatFilterPipe } from './new-home/list-asmats/asmat-filter.pipe';
-import { DeleteConfirmModalComponent } from './home/delete-confirm-modal/delete-confirm-modal.component';
+import { DeleteConfirmModalComponent } from './new-home/delete-confirm-modal/delete-confirm-modal.component';
 import { AuthService } from './service/auth.service';
 import { TokenInterceptor } from './service/interceptor/token.interceptor';
 import { UnauthorizedInterceptor } from './service/interceptor/unauthorized.interceptor';
@@ -31,8 +29,6 @@ import { SortPipe } from './pipe/sort.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    NavbarComponent,
     AsmatFilterPipe,
     DeleteConfirmModalComponent,
     LoginComponent,
@@ -46,7 +42,6 @@ import { SortPipe } from './pipe/sort.pipe';
     HttpClientModule,
     AppRoutingModule,
     MaterialModule,
-    FormsModule,
     ReactiveFormsModule
   ],
   providers: [

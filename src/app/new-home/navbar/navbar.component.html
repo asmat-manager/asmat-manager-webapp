@@ -3,13 +3,16 @@
     <img src="assets/logo.png" alt="logo"/>
   </div>
 
-  <button mat-button [matMenuTriggerFor]="menu">
-    Asmats
+  <button mat-button [matMenuTriggerFor]="asmatMenu">
+    Assistantes maternelles
   </button>
 
-  <mat-menu #menu>
+  <mat-menu #asmatMenu>
     <a mat-menu-item routerLink="/home/asmats">
-      Lister les asmats
+      Chercher une ass. mat.
+    </a>
+    <a mat-menu-item routerLink="/home/add">
+      Ajouter une ass. mat.
     </a>
   </mat-menu>
 </mat-toolbar>
