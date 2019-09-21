@@ -1,13 +1,7 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {ListAsmatsComponent} from './home/list-asmats/list-asmats.component';
-import {AddAsmatComponent} from './home/add-asmat/add-asmat.component';
-import {UpdateAsmatComponent} from './home/update-asmat/update-asmat.component';
-import {LoginComponent} from './login/login.component';
-import {AuthGuard} from './service/guard/auth.guard';
-import {AsmatDetailsComponent} from './home/asmat-details/asmat-details.component';
-import {PrintTableComponent} from './home/print-table/print-table.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './service/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,34 +10,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
     canActivate: [AuthGuard],
-    children: [
-      {
-        path: 'asmats',
-        component: ListAsmatsComponent
-      },
-      {
-        path: 'asmats/:id',
-        component: AsmatDetailsComponent
-      },
-      {
-        path: 'add',
-        component: AddAsmatComponent
-      },
-      {
-        path: 'update/:id',
-        component: UpdateAsmatComponent
-      },
-      {
-        path: 'print',
-        component: PrintTableComponent
-      },
-      {
-        path: '**',
-        redirectTo: 'asmats'
-      }
-    ]
+    loadChildren: () => import('./new-home/new-home.module').then(({NewHomeModule}) => NewHomeModule)
   },
   {
     path: '**',
@@ -52,7 +20,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash: true})],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
