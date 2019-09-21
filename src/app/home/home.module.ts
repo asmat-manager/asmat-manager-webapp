@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NewHomeRoutingModule } from './new-home-routing.module';
+import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { AsmatFormComponent } from './asmat-form/asmat-form.component';
 import { AddAsmatComponent } from './add-asmat/add-asmat.component';
@@ -29,11 +29,11 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     CommonModule,
-    NewHomeRoutingModule,
+    HomeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule
   ]
 })
-export class NewHomeModule {
+export class HomeModule {
 }
