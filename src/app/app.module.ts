@@ -11,9 +11,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { AsmatService } from './service/asmat.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AsmatFilterPipe } from './new-home/list-asmats/asmat-filter.pipe';
-import { DeleteConfirmModalComponent } from './new-home/delete-confirm-modal/delete-confirm-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './service/auth.service';
 import { TokenInterceptor } from './service/interceptor/token.interceptor';
 import { UnauthorizedInterceptor } from './service/interceptor/unauthorized.interceptor';
@@ -23,8 +21,10 @@ import { ToastService } from './service/toast.service';
 import { NoConnectionInterceptor } from './service/interceptor/no-connection.interceptor';
 import { ServerErrorModalComponent } from './server-error-modal/server-error-modal.component';
 import { ServerErrorInterceptor } from './service/interceptor/server-error.interceptor';
-import { PrintModalComponent } from './new-home/list-asmats/print-modal/print-modal.component';
 import { SortPipe } from './pipe/sort.pipe';
+import { AsmatFilterPipe } from './home/list-asmats/asmat-filter.pipe';
+import { DeleteConfirmModalComponent } from './home/delete-confirm-modal/delete-confirm-modal.component';
+import { PrintModalComponent } from './home/list-asmats/print-modal/print-modal.component';
 
 @NgModule({
   declarations: [
