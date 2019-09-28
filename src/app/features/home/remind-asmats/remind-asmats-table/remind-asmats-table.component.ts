@@ -38,6 +38,7 @@ export class RemindAsmatsTableComponent implements OnInit {
   public get displayedColumns(): string[] {
     return [
       'fullname',
+      'email',
       'joiningEndDate',
       'remainingDays'
     ];

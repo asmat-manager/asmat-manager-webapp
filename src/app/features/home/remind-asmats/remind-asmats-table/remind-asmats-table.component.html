@@ -4,9 +4,17 @@
            matSortDirection="asc"
            matSortDisableClear>
   <ng-container cdkColumnDef="fullname">
-    <mat-header-cell *cdkHeaderCellDef>Nom</mat-header-cell>
-    <mat-cell *cdkCellDef="let asmat">
+    <mat-header-cell *cdkHeaderCellDef class="larger">Nom complet</mat-header-cell>
+    <mat-cell *cdkCellDef="let asmat" class="larger">
       {{ asmat.firstName }} {{ asmat.lastName }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container cdkColumnDef="email">
+    <mat-header-cell *cdkHeaderCellDef class="larger">Adresse e-mail</mat-header-cell>
+    <mat-cell *cdkCellDef="let asmat" class="larger">
+      <ng-container *ngIf="asmat.email">{{ asmat.email }}</ng-container>
+      <span *ngIf="!asmat.email" class="no-mail">Non rensignée</span>
     </mat-cell>
   </ng-container>
 
