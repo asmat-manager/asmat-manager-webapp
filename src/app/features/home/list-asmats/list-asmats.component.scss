@@ -10,20 +10,24 @@
     margin-bottom: 24px;
   }
 
-  .inputs-container {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
+  .table-container {
+    margin: 0 5%;
 
-    margin-bottom: 20px;
+    .inputs-container {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
 
-    .btn-margin-x {
-      margin: 0 24px;
-    }
+      margin-bottom: 20px;
 
-    .add-btn-wrapper {
-      margin-left: 24px;
+      .btn-margin-x {
+        margin: 0 24px;
+      }
+
+      .add-btn-wrapper {
+        margin-left: 24px;
+      }
     }
   }
 }
