@@ -24,6 +24,8 @@ import {SortPipe} from './pipe/sort.pipe';
 import {AsmatFilterPipe} from './features/home/list-asmats/asmat-filter.pipe';
 import {DeleteConfirmModalComponent} from './features/home/delete-confirm-modal/delete-confirm-modal.component';
 import {PrintModalComponent} from './features/home/list-asmats/print-modal/print-modal.component';
+import { LoginModule } from './features/login/login.module';
+import { HomeModule } from './features/home/home.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import {PrintModalComponent} from './features/home/list-asmats/print-modal/print
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    LoginModule,
+    HomeModule,
     AppRoutingModule,
     MaterialModule,
     ReactiveFormsModule

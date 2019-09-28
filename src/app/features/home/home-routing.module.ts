@@ -35,12 +35,11 @@ const routes: Routes = [
       },
       {
         path: 'remind',
-        loadChildren: () => import('./remind-asmats/remind-asmats.module')
-          .then(({RemindAsmatsModule}) => RemindAsmatsModule)
+        loadChildren: () => import('./remind-asmats/remind-asmats.module').then(m => m.RemindAsmatsModule)
       },
       {
         path: '**',
-        redirectTo: ''
+        redirectTo: 'home'
       }
     ]
   }
