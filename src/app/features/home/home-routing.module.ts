@@ -34,6 +34,11 @@ const routes: Routes = [
         component: PrintTableComponent
       },
       {
+        path: 'remind',
+        loadChildren: () => import('./remind-asmats/remind-asmats.module')
+          .then(({RemindAsmatsModule}) => RemindAsmatsModule)
+      },
+      {
         path: '**',
         redirectTo: ''
       }

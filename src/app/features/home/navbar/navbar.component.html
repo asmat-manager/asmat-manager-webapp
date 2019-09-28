@@ -4,15 +4,22 @@
   </div>
 
   <button mat-button [matMenuTriggerFor]="asmatMenu">
+    <mat-icon svgIcon="asmat"></mat-icon>
     Assistantes maternelles
   </button>
 
   <mat-menu #asmatMenu>
     <a mat-menu-item routerLink="/home/asmats">
+      <mat-icon>search</mat-icon>
       Chercher une ass. mat.
     </a>
     <a mat-menu-item routerLink="/home/add">
+      <mat-icon>add</mat-icon>
       Ajouter une ass. mat.
+    </a>
+    <a mat-menu-item routerLink="/home/remind">
+      <mat-icon>alarm</mat-icon>
+      Consulter les rappels
     </a>
   </mat-menu>
 </mat-toolbar>
