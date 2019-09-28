@@ -15,7 +15,7 @@ import { MaterialModule } from '../../../material/material.module';
   imports: [
     CommonModule,
     RemindAsmatsRoutingModule,
-    MaterialModule
+    MaterialModule,
   ]
 })
 export class RemindAsmatsModule {

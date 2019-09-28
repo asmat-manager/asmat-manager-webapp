@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatMenuModule } from '@angular/material';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { MatMenuModule } from '@angular/material';
     MatSelectModule,
     MatTooltipModule,
     MatMenuModule,
-    CdkTableModule
+    CdkTableModule,
+    MatSortModule
   ],
   exports: [
     MatToolbarModule,
@@ -45,7 +47,8 @@ import { MatMenuModule } from '@angular/material';
     MatSelectModule,
     MatTooltipModule,
     MatMenuModule,
-    CdkTableModule
+    CdkTableModule,
+    MatSortModule
   ]
 })
 export class MaterialModule {

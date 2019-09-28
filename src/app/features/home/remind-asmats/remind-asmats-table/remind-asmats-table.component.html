@@ -1,4 +1,8 @@
-<mat-table [dataSource]="remindAsmats">
+<mat-table [dataSource]="dataSource"
+           matSort
+           matSortActive="remainingDays"
+           matSortDirection="asc"
+           matSortDisableClear>
   <ng-container cdkColumnDef="fullname">
     <mat-header-cell *cdkHeaderCellDef>Nom</mat-header-cell>
     <mat-cell *cdkCellDef="let asmat">
@@ -14,7 +18,7 @@
   </ng-container>
 
   <ng-container cdkColumnDef="remainingDays">
-    <mat-header-cell *cdkHeaderCellDef>Jours restants</mat-header-cell>
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Jours restants</mat-header-cell>
     <mat-cell *cdkCellDef="let asmat">
       {{ computeRemainingDays(asmat) }} jour(s)
     </mat-cell>
