@@ -1,1 +1,18 @@
-<p>remind-asmats works!</p>
+<div class="container">
+  <h2 class="title">Prochains rappels</h2>
+  <ng-container *ngIf="!loading; else loadingAsmats">
+    <app-remind-asmats-table *ngIf="remindAsmats.length > 0; else noAsmats"
+                             [remindAsmats]="remindAsmats">
+    </app-remind-asmats-table>
+  </ng-container>
+
+  <ng-template #noAsmats>
+    <span class="no-asmat">
+      Aucun rappel à traiter pour le moment.
+    </span>
+  </ng-template>
+
+  <ng-template #loadingAsmats>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+</div>

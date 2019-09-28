@@ -10,6 +10,7 @@ export interface Asmat {
   adherent: boolean;
   address: Address;
   joiningDate: Date;
+  joiningEndDate: Date;
   remindDate: Date;
   receptions: number;
   availabilityCommunicated: boolean;

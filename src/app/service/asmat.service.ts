@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Asmat} from '../model/asmat';
-import {AppConfig} from '../../environments/environment';
-import {AsmatFilterParams} from '../model/asmat-filter-params';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Asmat } from '../model/asmat';
+import { AppConfig } from '../../environments/environment';
+import { AsmatFilterParams } from '../model/asmat-filter-params';
 
 @Injectable()
 export class AsmatService {
@@ -21,6 +21,15 @@ export class AsmatService {
 
   public getAllByCity(city: string): Observable<Asmat[]> {
     return this.http.get<Asmat[]>(`${AppConfig.API_URL}/asmats?city=${city}`);
+  }
+
+  public getAllByJoiningEndDateBetween(lowerDate: Date, upperDate: Date): Observable<Asmat[]> {
+    const formatDate = (date: Date) => date.toISOString().substring(0, 10);
+    const params = {
+      joiningEndDateAfter: formatDate(lowerDate),
+      joiningEndDateBefore: formatDate(upperDate)
+    };
+    return this.http.get<Asmat[]>(`${AppConfig.API_URL}/asmats`, {params});
   }
 
   public getById(id: string): Observable<Asmat> {
