@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Asmat} from '../../../model/asmat';
-import {Address} from '../../../model/address';
+import {Asmat} from '../../../../model/asmat';
+import {Address} from '../../../../model/address';
 import {Router} from '@angular/router';
-import {formatAvailability} from '../../../utils/asmat-utils';
+import {formatAvailability} from '../../../../utils/asmat-utils';
 
 @Component({
   selector: 'app-asmats-table',

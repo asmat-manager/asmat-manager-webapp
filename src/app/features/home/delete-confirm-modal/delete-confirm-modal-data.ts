@@ -1,4 +1,4 @@
-import {Asmat} from '../../model/asmat';
+import {Asmat} from '../../../model/asmat';
 
 export interface DeleteConfirmModalData {
   asmat: Asmat;

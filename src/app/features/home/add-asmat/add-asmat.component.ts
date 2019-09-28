@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {Asmat} from '../../model/asmat';
-import {AsmatService} from '../../service/asmat.service';
+import {Asmat} from '../../../model/asmat';
+import {AsmatService} from '../../../service/asmat.service';
 import {Router} from '@angular/router';
 import {catchError} from 'rxjs/operators';
 import {HttpErrorResponse} from '@angular/common/http';
-import {ToastService} from '../../service/toast.service';
+import {ToastService} from '../../../service/toast.service';
 import {NEVER, throwError} from 'rxjs';
 
 @Component({

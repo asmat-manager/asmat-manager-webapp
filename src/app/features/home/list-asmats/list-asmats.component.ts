@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Asmat} from '../../model/asmat';
-import {AsmatService} from '../../service/asmat.service';
+import {Asmat} from '../../../model/asmat';
+import {AsmatService} from '../../../service/asmat.service';
 import {AsmatFilter} from './asmat-filter';
 import {AsmatFilterPipe} from './asmat-filter.pipe';
 import { MatDialog } from '@angular/material/dialog';

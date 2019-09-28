@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
-import {AsmatService} from '../../service/asmat.service';
-import {Asmat} from '../../model/asmat';
-import {Address} from '../../model/address';
+import {AsmatService} from '../../../service/asmat.service';
+import {Asmat} from '../../../model/asmat';
+import {Address} from '../../../model/address';
 import {ActivatedRoute, Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
-import {formatAvailability} from '../../utils/asmat-utils';
+import {formatAvailability} from '../../../utils/asmat-utils';
 
 @Component({
   selector: 'app-print-table',

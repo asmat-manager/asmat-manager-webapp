@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
-import { CustomValidators } from '../../validators/validators';
-import { Asmat } from '../../model/asmat';
-import { Address } from '../../model/address';
+import { CustomValidators } from '../../../validators/validators';
+import { Asmat } from '../../../model/asmat';
+import { Address } from '../../../model/address';
 
 @Component({
   selector: 'app-asmat-form',

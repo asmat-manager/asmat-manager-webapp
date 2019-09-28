@@ -11,7 +11,7 @@ import { AsmatsTableComponent } from './list-asmats/asmats-table/asmats-table.co
 import { AsmatDetailsComponent } from './asmat-details/asmat-details.component';
 import { PrintTableComponent } from './print-table/print-table.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../../material/material.module';
 import { NavbarComponent } from './navbar/navbar.component';
 
 

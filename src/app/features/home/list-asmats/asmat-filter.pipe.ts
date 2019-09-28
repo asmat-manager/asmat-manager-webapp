@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Asmat} from '../../model/asmat';
+import {Asmat} from '../../../model/asmat';
 import {AsmatFilter} from './asmat-filter';
 
 @Pipe({
