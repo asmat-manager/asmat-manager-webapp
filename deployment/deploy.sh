@@ -4,7 +4,7 @@ DOCKER_TAG=$1
 DOCKER_IMAGE="manager.allonounouicibebe.fr:5000/manager-webapp:$DOCKER_TAG"
 SERVICE_PATH="/home/corentin/services/$2"
 
-sed -n -i "s/[[BASE_NAME]]/$2/" deployment/nginx.conf
+sed -i -e "s/\\[\\[BASE_NAME\\]\\]/$2/" deployment/nginx.conf
 
 docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
 docker build -t $DOCKER_IMAGE .
