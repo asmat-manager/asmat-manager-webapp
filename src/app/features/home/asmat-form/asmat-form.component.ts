@@ -35,7 +35,6 @@ export class AsmatFormComponent implements OnInit {
     } as Asmat;
 
     const joiningDate = this.initialAsmat.joiningDate;
-    const remindDate = this.initialAsmat.remindDate;
 
     this.asmatForm = this.fb.group({
       firstName: [this.initialAsmat.firstName || '', Validators.required],
@@ -51,7 +50,6 @@ export class AsmatFormComponent implements OnInit {
         city: this.initialAsmat.address.city || ''
       }),
       joiningDate: joiningDate ? AsmatFormComponent.dateAsString(new Date(joiningDate)) : null,
-      remindDate: remindDate ? AsmatFormComponent.dateAsString(new Date(remindDate)) : null,
       receptions: this.initialAsmat.receptions || 0,
       availabilityCommunicated: this.initialAsmat.availabilityCommunicated || false,
       babyAvailability: [this.initialAsmat.babyAvailability || 0, Validators.min(0)],
