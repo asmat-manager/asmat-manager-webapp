@@ -8,12 +8,14 @@
   </ng-container>
 
   <ng-template #noAsmats>
-    <span class="no-asmat">
+    <div class="no-asmat">
       Aucun rappel à traiter pour le moment.
-    </span>
+    </div>
   </ng-template>
 
   <ng-template #loadingAsmats>
-    <mat-spinner></mat-spinner>
+    <div class="spinner-container">
+      <mat-spinner></mat-spinner>
+    </div>
   </ng-template>
 </div>

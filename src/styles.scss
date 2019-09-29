@@ -8,4 +8,15 @@ html, body {
   height: 100%;
 
   background-color: mat-color($accent-palette, 50);
+
+  .spinner-container {
+    position: relative;
+    top: 20vh;
+
+    width: 100%;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+  }
 }
