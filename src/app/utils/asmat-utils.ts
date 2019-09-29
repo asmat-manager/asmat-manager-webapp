@@ -1,4 +1,4 @@
-import {Asmat} from '../model/asmat';
+import { Asmat } from '../model/asmat';
 
 export function formatAvailability(asmat: Asmat): string {
   if (asmat.availabilityCommunicated) {
@@ -23,4 +23,15 @@ export function formatAvailability(asmat: Asmat): string {
   } else {
     return 'Non communiquée';
   }
+}
+
+export function computeRemindInterval(): RemindInterval {
+  const lowerDate = new Date();
+  const upperDate = new Date();
+  upperDate.setMonth(upperDate.getMonth() + 1);
+
+  return {
+    lowerDate,
+    upperDate
+  };
 }

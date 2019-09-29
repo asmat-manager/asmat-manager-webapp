@@ -3,6 +3,7 @@ import { AsmatService } from '../../../service/asmat.service';
 import { Observable } from 'rxjs';
 import { Asmat } from '../../../model/asmat';
 import { tap } from 'rxjs/operators';
+import { computeRemindInterval } from '../../../utils/asmat-utils';
 
 @Component({
   selector: 'app-remind-asmats',
@@ -24,12 +25,8 @@ export class RemindAsmatsComponent implements OnInit {
   }
 
   private loadRemindAsmats(): Observable<Asmat[]> {
-    const lowerDate = new Date();
-    const upperDate = new Date();
-    upperDate.setMonth(upperDate.getMonth() + 1);
     this.loading = true;
-
-    return this.asmatService.getAllByJoiningEndDateBetween(lowerDate, upperDate)
+    return this.asmatService.getAllByJoiningEndDateBetween(computeRemindInterval())
       .pipe(tap(() => this.loading = false));
   }
 }

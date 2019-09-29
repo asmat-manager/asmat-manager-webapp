@@ -10,6 +10,7 @@ import {NEVER, of} from 'rxjs';
 import {DeleteConfirmModalData} from '../delete-confirm-modal/delete-confirm-modal-data';
 import {PrintModalComponent} from './print-modal/print-modal.component';
 import {Router} from '@angular/router';
+import { NavbarUpdateService } from '../../../service/navbar-update.service';
 
 @Component({
   selector: 'app-list-asmats',
@@ -26,6 +27,7 @@ export class ListAsmatsComponent implements OnInit {
   private asmatFilterPipe: AsmatFilterPipe;
 
   constructor(private asmatService: AsmatService,
+              private navbarUpdateService: NavbarUpdateService,
               private dialog: MatDialog,
               private router: Router) {
     this.asmats = [];
@@ -53,7 +55,8 @@ export class ListAsmatsComponent implements OnInit {
     })
       .afterClosed()
       .pipe(
-        flatMap(shouldDelete => shouldDelete ? this.asmatService.deleteById(asmat._id) : NEVER)
+        flatMap(shouldDelete => shouldDelete ? this.asmatService.deleteById(asmat._id) : NEVER),
+        tap(() => this.navbarUpdateService.update())
       )
       .subscribe(() => this.asmats.splice(this.asmats.indexOf(asmat), 1));
   }

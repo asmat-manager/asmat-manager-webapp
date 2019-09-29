@@ -23,7 +23,8 @@ export class AsmatService {
     return this.http.get<Asmat[]>(`${AppConfig.API_URL}/asmats?city=${city}`);
   }
 
-  public getAllByJoiningEndDateBetween(lowerDate: Date, upperDate: Date): Observable<Asmat[]> {
+  public getAllByJoiningEndDateBetween(remindInterval: RemindInterval): Observable<Asmat[]> {
+    const {upperDate, lowerDate} = remindInterval;
     const formatDate = (date: Date) => date.toISOString().substring(0, 10);
     const params = {
       joiningEndDateAfter: formatDate(lowerDate),

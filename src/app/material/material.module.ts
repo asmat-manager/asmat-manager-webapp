@@ -14,6 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatMenuModule } from '@angular/material';
 import { MatSortModule } from '@angular/material/sort';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatTooltipModule,
     MatMenuModule,
     CdkTableModule,
-    MatSortModule
+    MatSortModule,
+    MatBadgeModule
   ],
   exports: [
     MatToolbarModule,
@@ -48,7 +50,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatTooltipModule,
     MatMenuModule,
     CdkTableModule,
-    MatSortModule
+    MatSortModule,
+    MatBadgeModule
   ]
 })
 export class MaterialModule {
