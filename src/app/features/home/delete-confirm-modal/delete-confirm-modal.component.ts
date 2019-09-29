@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {DeleteConfirmModalData} from './delete-confirm-modal-data';
+import {AsmatDialogData} from '../../../model/asmat-dialog-data';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DeleteConfirmModalComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DeleteConfirmModalData) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: AsmatDialogData) {
   }
 
 }

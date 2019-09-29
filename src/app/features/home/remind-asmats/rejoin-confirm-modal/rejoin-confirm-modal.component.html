@@ -1,0 +1,21 @@
+<div class="mat-typography">
+  <h2 mat-dialog-title>
+    Ré-adhésion de {{ data.asmat.firstName }} {{ data.asmat.lastName }}
+  </h2>
+
+  <p>
+    En confirmant le paiement de la ré-adhésion de {{ data.asmat.firstName }} {{ data.asmat.lastName }},
+    les dates d'adhésion et de rappel se mettront à jour automatiquement pour l'année prochaine.
+  </p>
+
+  <mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="false">
+      <mat-icon>clear</mat-icon>
+      ANNULER
+    </button>
+    <button mat-button [mat-dialog-close]="true" color="accent">
+      <mat-icon>check</mat-icon>
+      OUI
+    </button>
+  </mat-dialog-actions>
+</div>

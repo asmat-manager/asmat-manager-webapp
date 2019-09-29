@@ -32,6 +32,20 @@
     </mat-cell>
   </ng-container>
 
+  <ng-container cdkColumnDef="actions">
+    <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+    <mat-cell *cdkCellDef="let asmat">
+      <div>
+        <button mat-button
+                color="primary"
+                (click)="onRejoinConfirmed.emit(asmat)">
+          <mat-icon>check</mat-icon>
+          Adhésion renouvelée
+        </button>
+      </div>
+    </mat-cell>
+  </ng-container>
+
   <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>

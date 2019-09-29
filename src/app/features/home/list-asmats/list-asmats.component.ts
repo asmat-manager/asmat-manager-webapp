@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {DeleteConfirmModalComponent} from '../delete-confirm-modal/delete-confirm-modal.component';
 import {flatMap, tap} from 'rxjs/operators';
 import {NEVER, of} from 'rxjs';
-import {DeleteConfirmModalData} from '../delete-confirm-modal/delete-confirm-modal-data';
+import {AsmatDialogData} from '../../../model/asmat-dialog-data';
 import {PrintModalComponent} from './print-modal/print-modal.component';
 import {Router} from '@angular/router';
 import { NavbarUpdateService } from '../../../service/navbar-update.service';
@@ -51,7 +51,7 @@ export class ListAsmatsComponent implements OnInit {
       },
       data: {
         asmat
-      } as DeleteConfirmModalData
+      } as AsmatDialogData
     })
       .afterClosed()
       .pipe(

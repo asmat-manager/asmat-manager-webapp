@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Asmat } from '../../../../model/asmat';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -13,6 +13,9 @@ export class RemindAsmatsTableComponent implements OnInit {
   @Input()
   public remindAsmats: Asmat[];
 
+  @Output()
+  public onRejoinConfirmed: EventEmitter<Asmat>;
+
   @ViewChild(MatSort, {static: true})
   public matSort: MatSort;
 
@@ -21,6 +24,7 @@ export class RemindAsmatsTableComponent implements OnInit {
   constructor() {
     this.remindAsmats = [];
     this.dataSource = new MatTableDataSource<Asmat>();
+    this.onRejoinConfirmed = new EventEmitter<Asmat>();
   }
 
   public ngOnInit() {
@@ -40,7 +44,8 @@ export class RemindAsmatsTableComponent implements OnInit {
       'fullname',
       'email',
       'joiningEndDate',
-      'remainingDays'
+      'remainingDays',
+      'actions'
     ];
   }
 

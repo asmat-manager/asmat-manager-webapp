@@ -7,11 +7,11 @@ export class NavbarUpdateService {
   public readonly navbarUpdate: Observable<any>;
 
   constructor() {
-    this.navbarUpdateSubject = new BehaviorSubject<any>();
+    this.navbarUpdateSubject = new BehaviorSubject<any>(1);
     this.navbarUpdate = this.navbarUpdateSubject.asObservable();
   }
 
   public update() {
-    this.navbarUpdateSubject.next();
+    this.navbarUpdateSubject.next(1);
   }
 }
