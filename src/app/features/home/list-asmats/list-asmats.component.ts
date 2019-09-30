@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {Asmat} from '../../../model/asmat';
-import {AsmatService} from '../../../service/asmat.service';
-import {AsmatFilter} from './asmat-filter';
-import {AsmatFilterPipe} from './asmat-filter.pipe';
+import { Component, OnInit } from '@angular/core';
+import { Asmat } from '../../../model/asmat';
+import { AsmatService } from '../../../service/asmat.service';
+import { AsmatFilter } from './asmat-filter';
+import { AsmatFilterPipe } from './asmat-filter.pipe';
 import { MatDialog } from '@angular/material/dialog';
-import {DeleteConfirmModalComponent} from '../delete-confirm-modal/delete-confirm-modal.component';
-import {flatMap, tap} from 'rxjs/operators';
-import {NEVER, of} from 'rxjs';
-import {AsmatDialogData} from '../../../model/asmat-dialog-data';
-import {PrintModalComponent} from './print-modal/print-modal.component';
-import {Router} from '@angular/router';
+import { DeleteConfirmModalComponent } from '../delete-confirm-modal/delete-confirm-modal.component';
+import { flatMap, tap } from 'rxjs/operators';
+import { NEVER, of } from 'rxjs';
+import { AsmatDialogData } from '../../../model/asmat-dialog-data';
+import { PrintModalComponent } from './print-modal/print-modal.component';
+import { Router } from '@angular/router';
 import { NavbarUpdateService } from '../../../service/navbar-update.service';
 
 @Component({

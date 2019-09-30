@@ -20,7 +20,7 @@ export class PrintModalComponent implements OnInit {
     this.printForm = this.fb.group({
       city: [null, Validators.required],
       adherentOnly: false,
-      includeDates: false,
+      includeDate: false,
       includeEmails: false
     });
   }

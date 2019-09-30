@@ -80,13 +80,6 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container cdkColumnDef="remindDate">
-      <mat-header-cell *cdkHeaderCellDef class="flex-2">Rappel</mat-header-cell>
-      <mat-cell *cdkCellDef="let asmat" class="flex-2">
-        {{ asmat.remindDate | date:'shortDate' }}
-      </mat-cell>
-    </ng-container>
-
     <mat-header-row *cdkHeaderRowDef="displayColumns"></mat-header-row>
     <mat-row *cdkRowDef="let row; columns: displayColumns"></mat-row>
   </mat-table>
