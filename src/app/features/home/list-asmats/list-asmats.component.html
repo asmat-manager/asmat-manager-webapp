@@ -7,7 +7,8 @@
         <input matInput
                type="text"
                placeholder="Rechercher par nom, prénom ou ville..."
-               [(ngModel)]="searchInput"/>
+               [value]="searchInput"
+               (input)="onSearchInput($event)"/>
         <mat-label>Recherche</mat-label>
       </mat-form-field>
 

@@ -37,7 +37,7 @@ export class UpdateAsmatComponent implements OnInit {
         catchError(this.handleHttpError.bind(this)),
         tap(() => this.navbarUpdateService.update())
       )
-      .subscribe(() => this.router.navigate(['home']));
+      .subscribe(() => this.router.navigate(['home', 'asmats']));
   }
 
   private handleHttpError(error: HttpErrorResponse) {

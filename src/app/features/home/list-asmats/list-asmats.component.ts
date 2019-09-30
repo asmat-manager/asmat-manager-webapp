@@ -9,7 +9,7 @@ import { flatMap, tap } from 'rxjs/operators';
 import { NEVER, of } from 'rxjs';
 import { AsmatDialogData } from '../../../model/asmat-dialog-data';
 import { PrintModalComponent } from './print-modal/print-modal.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NavbarUpdateService } from '../../../service/navbar-update.service';
 
 @Component({
@@ -29,6 +29,7 @@ export class ListAsmatsComponent implements OnInit {
   constructor(private asmatService: AsmatService,
               private navbarUpdateService: NavbarUpdateService,
               private dialog: MatDialog,
+              private route: ActivatedRoute,
               private router: Router) {
     this.asmats = [];
     this.searchInput = '';
@@ -41,6 +42,15 @@ export class ListAsmatsComponent implements OnInit {
     this.asmatService.getAll()
       .pipe(tap(() => this.asmatsLoaded = true))
       .subscribe(asmats => this.asmats = asmats);
+    this.route.queryParamMap.subscribe(queryParams => {
+      this.searchInput = queryParams.get('query') || '';
+    });
+  }
+
+  public onSearchInput(event: any) {
+    const {target: {value}} = event;
+    const queryParams = {query: value};
+    this.router.navigate([], {queryParams});
   }
 
   public onDeleteClicked(asmat: Asmat) {
