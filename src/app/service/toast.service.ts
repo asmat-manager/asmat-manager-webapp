@@ -11,7 +11,7 @@ export class ToastService {
   constructor(private snackbar: MatSnackBar) {
   }
 
-  public open(message: string, duration: number = 3000) {
+  public open(message: string, duration: number = 6000) {
     this.snackbar.open(message, 'OK', {
       duration,
       horizontalPosition: 'right',

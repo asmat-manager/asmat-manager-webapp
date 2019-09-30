@@ -7,6 +7,7 @@ import { computeRemindInterval } from '../../../utils/asmat-utils';
 import { MatDialog } from '@angular/material/dialog';
 import { RejoinConfirmModalComponent } from './rejoin-confirm-modal/rejoin-confirm-modal.component';
 import { NavbarUpdateService } from '../../../service/navbar-update.service';
+import { ToastService } from '../../../service/toast.service';
 
 @Component({
   selector: 'app-remind-asmats',
@@ -20,7 +21,8 @@ export class RemindAsmatsComponent implements OnInit {
 
   constructor(private asmatService: AsmatService,
               private navbarUpdateService: NavbarUpdateService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private toaster: ToastService) {
     this.remindAsmats = [];
   }
 
@@ -41,12 +43,14 @@ export class RemindAsmatsComponent implements OnInit {
     }).afterClosed().pipe(
       flatMap(result => result ? of(result) : NEVER),
       flatMap(() => {
-        const newJoiningDate = new Date(asmat.joiningEndDate);
+        const newJoiningDate = this.getNextJoiningDate(asmat);
         const updatedAsmat: Asmat = {
           ...asmat,
-          joiningDate: newJoiningDate
+          joiningDate: newJoiningDate,
+          adherent: true
         };
-        return this.asmatService.update(updatedAsmat);
+        return this.asmatService.update(updatedAsmat)
+          .pipe(tap(() => this.toaster.open(`Adhésion renouvelée avec succès à la date du ${newJoiningDate.toLocaleDateString()}.`)));
       }),
       tap(() => this.navbarUpdateService.update()),
       flatMap(() => this.loadRemindAsmats())
@@ -57,5 +61,15 @@ export class RemindAsmatsComponent implements OnInit {
     this.loading = true;
     return this.asmatService.getAllByJoiningEndDateBetween(computeRemindInterval())
       .pipe(tap(() => this.loading = false));
+  }
+
+  private getNextJoiningDate(asmat: Asmat): Date {
+    const now = new Date();
+    const oldJoiningDate = new Date(asmat.joiningEndDate);
+    if (oldJoiningDate < now) {
+      return new Date(now.toISOString().substring(0, 10));
+    } else {
+      return oldJoiningDate;
+    }
   }
 }
