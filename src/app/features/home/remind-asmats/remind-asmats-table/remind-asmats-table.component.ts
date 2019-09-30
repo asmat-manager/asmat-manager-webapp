@@ -53,6 +53,25 @@ export class RemindAsmatsTableComponent implements OnInit {
     return (joiningEndDate.valueOf() - now.valueOf()) / (24 * 3600 * 1000);
   }
 
+  public getAlertMessage(asmat: Asmat): string {
+    const type = this.getAlertType(asmat);
+    if (type === 'warn') {
+      return 'L\'adhésion arrive à expiration.';
+    } else {
+      return 'L\'adhésion a expirée. L\'assistante maternelle a 30 jours pour renouveler son adhésion.';
+    }
+  }
+
+  public getAlertType(asmat: Asmat): 'warn' | 'urgent' | 'none' {
+    const remainingDays = this.computeRemainingDays(asmat);
+    if (remainingDays < this.DAYS_ALERT_THRESHOLD) {
+      return 'urgent';
+    } else if (remainingDays < this.DAYS_WARN_THRESHOLD) {
+      return 'warn';
+    }
+    return 'none';
+  }
+
   public get displayedColumns(): string[] {
     return [
       'alert',

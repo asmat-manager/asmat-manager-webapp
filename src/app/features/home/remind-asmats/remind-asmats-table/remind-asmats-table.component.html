@@ -8,11 +8,9 @@
     <mat-header-cell *cdkHeaderCellDef class="alert-icons"></mat-header-cell>
     <mat-cell *cdkCellDef="let asmat" class="alert-icons">
       <mat-icon *ngIf="computeRemainingDays(asmat) < DAYS_WARN_THRESHOLD"
+                matTooltip="{{ getAlertMessage(asmat) }}"
                 class="alert-icon"
-                [ngClass]="{
-                'warn': computeRemainingDays(asmat) < DAYS_WARN_THRESHOLD,
-                'urgent': computeRemainingDays(asmat) < DAYS_ALERT_THRESHOLD
-                }">
+                [ngClass]="getAlertType(asmat)">
         warning
       </mat-icon>
     </mat-cell>
