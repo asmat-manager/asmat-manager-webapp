@@ -9,6 +9,6 @@ import { AsmatDialogData } from '../../../../model/asmat-dialog-data';
 })
 export class RejoinConfirmModalComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) private data: AsmatDialogData) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: AsmatDialogData) { }
 
 }
