@@ -27,6 +27,7 @@ export function formatAvailability(asmat: Asmat): string {
 
 export function computeRemindInterval(): RemindInterval {
   const lowerDate = new Date();
+  lowerDate.setMonth(lowerDate.getMonth() - 1);
   const upperDate = new Date();
   upperDate.setMonth(upperDate.getMonth() + 1);
 

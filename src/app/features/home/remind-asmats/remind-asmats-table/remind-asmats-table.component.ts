@@ -10,6 +10,9 @@ import { MatSort } from '@angular/material/sort';
 })
 export class RemindAsmatsTableComponent implements OnInit {
 
+  private readonly DAYS_WARN_THRESHOLD = 7;
+  private readonly DAYS_ALERT_THRESHOLD = 0;
+
   @Input()
   public remindAsmats: Asmat[];
 
@@ -33,6 +36,17 @@ export class RemindAsmatsTableComponent implements OnInit {
     this.dataSource.sortingDataAccessor = this.sortAsmatAccessor.bind(this);
   }
 
+  public formatRemainingDays(asmat: Asmat): string {
+    const remainingDays = this.computeRemainingDays(asmat);
+    if (remainingDays >= 0) {
+      const message = `${remainingDays} jour`;
+      return remainingDays > 1 ? `${message}s` : message;
+    } else {
+      const message = `il y a ${Math.abs(remainingDays)} jour`;
+      return remainingDays < -1 ? `${message}s` : message;
+    }
+  }
+
   public computeRemainingDays(asmat: Asmat): number {
     const joiningEndDate = new Date(asmat.joiningEndDate);
     const now = new Date(new Date().toISOString().substring(0, 10));
@@ -41,6 +55,7 @@ export class RemindAsmatsTableComponent implements OnInit {
 
   public get displayedColumns(): string[] {
     return [
+      'alert',
       'fullname',
       'email',
       'joiningEndDate',

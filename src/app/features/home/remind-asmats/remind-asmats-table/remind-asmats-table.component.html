@@ -1,8 +1,23 @@
 <mat-table [dataSource]="dataSource"
+           class="remind-table"
            matSort
            matSortActive="remainingDays"
            matSortDirection="asc"
            matSortDisableClear>
+  <ng-container cdkColumnDef="alert">
+    <mat-header-cell *cdkHeaderCellDef class="alert-icons"></mat-header-cell>
+    <mat-cell *cdkCellDef="let asmat" class="alert-icons">
+      <mat-icon *ngIf="computeRemainingDays(asmat) < DAYS_WARN_THRESHOLD"
+                class="alert-icon"
+                [ngClass]="{
+                'warn': computeRemainingDays(asmat) < DAYS_WARN_THRESHOLD,
+                'urgent': computeRemainingDays(asmat) < DAYS_ALERT_THRESHOLD
+                }">
+        warning
+      </mat-icon>
+    </mat-cell>
+  </ng-container>
+
   <ng-container cdkColumnDef="fullname">
     <mat-header-cell *cdkHeaderCellDef class="larger">Nom complet</mat-header-cell>
     <mat-cell *cdkCellDef="let asmat" class="larger">
@@ -28,7 +43,7 @@
   <ng-container cdkColumnDef="remainingDays">
     <mat-header-cell *cdkHeaderCellDef mat-sort-header>Jours restants</mat-header-cell>
     <mat-cell *cdkCellDef="let asmat">
-      {{ computeRemainingDays(asmat) }} jour(s)
+      {{ formatRemainingDays(asmat) }}
     </mat-cell>
   </ng-container>
 
@@ -46,6 +61,6 @@
     </mat-cell>
   </ng-container>
 
-  <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-header-row *cdkHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
   <mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
