@@ -46,14 +46,14 @@
   </ng-container>
 
   <ng-container cdkColumnDef="actions">
-    <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
-    <mat-cell *cdkCellDef="let asmat">
+    <mat-header-cell *cdkHeaderCellDef class="a-bit-larger"></mat-header-cell>
+    <mat-cell *cdkCellDef="let asmat" class="a-bit-larger">
       <div>
         <button mat-button
                 color="primary"
                 (click)="onRejoinConfirmed.emit(asmat)">
           <mat-icon>check</mat-icon>
-          Adhésion renouvelée
+          Confirmer la ré-adhésion
         </button>
       </div>
     </mat-cell>
